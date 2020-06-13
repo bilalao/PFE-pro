@@ -15,7 +15,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/HibernateLib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MysqlLib"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jstlLib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jsfLib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jstl"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PrimeFaces"/>
