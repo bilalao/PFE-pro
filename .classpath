@@ -13,11 +13,36 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/HibernateLib"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MysqlLib"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jsfLib"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jstl"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PrimeFaces"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SpringLib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/HibernateLib">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MysqlLib">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jsfLib">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.jsf;#system#"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jstl">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PrimeFaces">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SpringLib">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
