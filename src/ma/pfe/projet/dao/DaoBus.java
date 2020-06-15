@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ma.pfe.projet.entity.Bus;
 
-@Repository
+@Repository("daoBus")
 @Transactional
 @EnableTransactionManagement
 public class DaoBus implements IDAO<Bus> {

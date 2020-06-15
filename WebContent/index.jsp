@@ -50,13 +50,13 @@
         TOP BAR CONTENT & NOTIFICATIONS
         *********************************************************************************************************************************************************** -->
 		<!--header start-->
-		<jsp:include page="template/header.jsp"></jsp:include>
+		<jsp:include page="WEB-INF/template/header.xhtml"></jsp:include>
 		<!--header end-->
 		<!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
 		<!--sidebar start-->
-		<jsp:include page="template/menu.jsp"></jsp:include>
+		<jsp:include page="WEB-INF/template/menu.xhtml"></jsp:include>
 		<!--sidebar end-->
 		<!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -69,7 +69,7 @@
 		<!-- /MAIN CONTENT -->
 		<!--main content end-->
 		<!--footer start-->
-		<jsp:include page="template/footer.jsp"></jsp:include>
+		<jsp:include page="WEB-INF/template/footer.xhtml"></jsp:include>
 		<!--footer end-->
 	</section>
 	<!-- js placed at the end of the document so the pages load faster -->
