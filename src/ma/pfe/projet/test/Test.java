@@ -8,7 +8,6 @@ import ma.pfe.projet.dao.IDAO;
 import ma.pfe.projet.entity.Bus;
 
 
-
 public class Test {
 
 	
@@ -16,13 +15,13 @@ public class Test {
 		IDAO<Bus> dao= new DaoBus();
 		// create a Bus
 				Bus b = new Bus(790,"Y-349", "Bus B", "Class C");
-				System.out.println("Saving the Bus");
+				//System.out.println("Saving the Bus");
 				System.out.println(b);
 
 				dao.save(b);
 		
 
-		System.out.println("Done!");
+		//System.out.println("Done!");
 		
 		
 

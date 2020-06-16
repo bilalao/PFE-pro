@@ -2,14 +2,19 @@ package ma.pfe.projet.metier;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import ma.pfe.projet.dao.IDAO;
 import ma.pfe.projet.entity.Station;
-
+@Service
 public class MetierStation implements IMetier<Station> {
-
+	@Autowired
+	IDAO<Station> daostation;
 	@Override
 	public boolean create(Station o) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return daostation.save(o);
 	}
 
 	@Override
