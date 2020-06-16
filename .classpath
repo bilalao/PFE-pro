@@ -13,17 +13,17 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/HibernateLib">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MysqlLib">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/driverMysql">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jsfLib">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jsf">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.jsf;#system#"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
@@ -39,7 +39,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SpringLib">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

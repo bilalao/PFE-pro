@@ -14,6 +14,7 @@ import ma.pfe.projet.entity.Bus;
 @Transactional
 @EnableTransactionManagement
 public class DaoBus implements IDAO<Bus> {
+	
 	@Autowired
 	SessionFactory sessionFactory;
 
