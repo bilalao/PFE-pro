@@ -3,7 +3,7 @@ Welcome here we gonna work together on our project
 ## Technologies using:
 -J2EE
 -JSF 2,2
--PrimeFaces 6,2
--SpringIOC /
+-PrimeFaces 7,0
+-SpringIOC 4,0 /
 -Hibernate 5,2
 -(Maven)

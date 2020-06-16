@@ -13,7 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+//import org.springframework.context.annotation.ComponentScan;
+//import org.springframework.context.annotation.Configuration;
 
+//@Configuration
+//@ComponentScan("ma.pfe.projet.entity")
 @Entity
 @Table(name = "bus")
 public class Bus implements Serializable {
