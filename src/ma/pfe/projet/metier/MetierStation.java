@@ -19,26 +19,26 @@ public class MetierStation implements IMetier<Station> {
 
 	@Override
 	public boolean update(Station o) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return daostation.update(o);
 	}
 
 	@Override
 	public boolean delete(Station o) {
-		// TODO Auto-generated method stub
-		return false;
+	
+		return daostation.delete(o);
 	}
 
 	@Override
 	public Station findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return daostation.findById(id);
 	}
 
 	@Override
 	public List<Station> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return daostation.findAll();
 	}
 
 	@Override

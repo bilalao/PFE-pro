@@ -10,12 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ma.pfe.projet.entity.Reservation;
 
-@Transactional
-@Repository
 @EnableTransactionManagement
-public class DaoReservation  implements IDAO<Reservation>{
+@Transactional
+@Repository("daoReservation")
+
+public class DaoReservation implements IDAO<Reservation> {
 	@Autowired
 	SessionFactory sessionFactory;
+
 	@Override
 	public boolean save(Reservation o) {
 		try {
@@ -52,7 +54,7 @@ public class DaoReservation  implements IDAO<Reservation>{
 			e.printStackTrace();
 			return false;
 		}
-		
+
 	}
 
 	@Override

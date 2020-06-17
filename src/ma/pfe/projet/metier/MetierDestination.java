@@ -9,38 +9,38 @@ import ma.pfe.projet.dao.IDAO;
 import ma.pfe.projet.entity.Destination;
 
 @Service
-public class MetierDestination implements IMetier<Destination>{
+public class MetierDestination implements IMetier<Destination> {
 	@Autowired
 	IDAO<Destination> daodestination;
 
 	@Override
 	public boolean create(Destination o) {
-		
+
 		return daodestination.save(o);
 	}
 
 	@Override
 	public boolean update(Destination o) {
-		// TODO Auto-generated method stub
-		return false;
+
+		return daodestination.update(o);
 	}
 
 	@Override
 	public boolean delete(Destination o) {
-		// TODO Auto-generated method stub
-		return false;
+
+		return daodestination.delete(o);
 	}
 
 	@Override
 	public Destination findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return daodestination.findById(id);
 	}
 
 	@Override
 	public List<Destination> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return daodestination.findAll();
 	}
 
 	@Override
@@ -48,6 +48,5 @@ public class MetierDestination implements IMetier<Destination>{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
 }

@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ma.pfe.projet.entity.Client;
 
-@Repository
-@Transactional
 @EnableTransactionManagement
+@Transactional
+@Repository("daoClient")
 public class DaoClient implements IDAO<Client> {
 	@Autowired
 	SessionFactory sessionFactory;

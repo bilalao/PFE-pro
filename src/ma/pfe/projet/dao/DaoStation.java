@@ -10,12 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ma.pfe.projet.entity.Station;
 
-@Repository
-@Transactional
 @EnableTransactionManagement
+@Transactional
+@Repository("daoStation")
+
 public class DaoStation implements IDAO<Station> {
 	@Autowired
 	SessionFactory sessionFactory;
+
 	@Override
 	public boolean save(Station o) {
 		try {
@@ -52,7 +54,7 @@ public class DaoStation implements IDAO<Station> {
 			e.printStackTrace();
 			return false;
 		}
-		
+
 	}
 
 	@Override

@@ -20,26 +20,22 @@ public class MetierReservation implements IMetier<Reservation> {
 
 	@Override
 	public boolean update(Reservation o) {
-		// TODO Auto-generated method stub
-		return false;
+		return daoreservation.update(o);
 	}
 
 	@Override
 	public boolean delete(Reservation o) {
-		// TODO Auto-generated method stub
-		return false;
+		return daoreservation.delete(o);
 	}
 
 	@Override
 	public Reservation findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoreservation.findById(id);
 	}
 
 	@Override
 	public List<Reservation> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return daoreservation.findAll();
 	}
 
 	@Override
