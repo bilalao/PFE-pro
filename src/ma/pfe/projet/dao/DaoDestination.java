@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
-
-@Transactional
-@Repository
 @EnableTransactionManagement
+@Transactional
+@Repository("daoDestination")
+
 public class DaoDestination implements IDAO<Destination> {
 	@Autowired
 	SessionFactory sessionFactory;
@@ -53,7 +53,7 @@ public class DaoDestination implements IDAO<Destination> {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false; 
+			return false;
 		}
 
 	}

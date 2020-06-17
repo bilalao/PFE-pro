@@ -2,38 +2,43 @@ package ma.pfe.projet.metier;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import ma.pfe.projet.dao.IDAO;
 import ma.pfe.projet.entity.Station;
-
+@Service
 public class MetierStation implements IMetier<Station> {
-
+	@Autowired
+	IDAO<Station> daostation;
 	@Override
 	public boolean create(Station o) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return daostation.save(o);
 	}
 
 	@Override
 	public boolean update(Station o) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return daostation.update(o);
 	}
 
 	@Override
 	public boolean delete(Station o) {
-		// TODO Auto-generated method stub
-		return false;
+	
+		return daostation.delete(o);
 	}
 
 	@Override
 	public Station findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return daostation.findById(id);
 	}
 
 	@Override
 	public List<Station> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return daostation.findAll();
 	}
 
 	@Override

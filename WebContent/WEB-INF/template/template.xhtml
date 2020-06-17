@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+
+	<style>
+body {
+	font-size: 11px;
+}
+</style>
+
+</h:head>
+<body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit id="top" position="north" size="55">
+			<ui:insert name="header">
+				<ui:include src="/WEB-INF/template/header.xhtml" />
+			</ui:insert>
+		</p:layoutUnit>
+
+		<p:layoutUnit id="bottom" position="south" size="25"
+			style="text-align:center;">
+			<ui:insert name="footer">
+				<ui:include src="/WEB-INF/template/footer.xhtml" />
+			</ui:insert>
+		</p:layoutUnit>
+
+		<p:layoutUnit id="left" position="west" size="300" resizable="true"
+			collapsible="true" header="Menu Generale" minSize="200">
+			<ui:insert name="menu">
+				<ui:include src="/WEB-INF/template/menu.xhtml" />
+			</ui:insert>
+		</p:layoutUnit>
+
+		<p:layoutUnit id="center" position="center">
+			<ui:insert name="content">
+			</ui:insert>
+		</p:layoutUnit>
+
+	</p:layout>
+
+</body>
+</html>
