@@ -12,21 +12,18 @@ import ma.pfe.projet.entity.Bus;
 
 @EnableTransactionManagement
 @Transactional
-@Repository
+@Repository("daoBus")
 public class DaoBus implements IDAO<Bus> {
 	
 	@Autowired
 	SessionFactory sessionFactory;
-
+	
 	@Override
 	public boolean save(Bus o) {
-		try {
-
-			
+		try {	
 			sessionFactory.getCurrentSession().save(o);
-			
 			return true;
-
+			
 		} catch (Exception e) {
 			return false;
 		}
@@ -34,12 +31,10 @@ public class DaoBus implements IDAO<Bus> {
 
 	@Override
 	public boolean update(Bus o) {
-		try {
-
-			System.out.println("Updating Bus...");
+		try {	
 			sessionFactory.getCurrentSession().update(o);
 			return true;
-
+			
 		} catch (Exception e) {
 			return false;
 		}
@@ -47,31 +42,30 @@ public class DaoBus implements IDAO<Bus> {
 
 	@Override
 	public boolean delete(Bus o) {
-
-		try {
-
+		try {	
 			sessionFactory.getCurrentSession().delete(o);
-
-			System.out.println("Bus =" + o + "is deleted!");
 			return true;
-
+			
 		} catch (Exception e) {
-
-			e.printStackTrace();
 			return false;
 		}
 	}
 
 	@Override
-	public Bus findById(int id) {
-
-		return sessionFactory.getCurrentSession().get(Bus.class, id);
+	public boolean validate(String userName, String password) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
 	public List<Bus> findAll() {
-
 		return sessionFactory.getCurrentSession().createQuery("from Bus").getResultList();
+	}
+
+	@Override
+	public Bus findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

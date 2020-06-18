@@ -13,10 +13,11 @@ import ma.pfe.projet.metier.IMetier;
 @ManagedBean
 @Component
 public class BeanReservation {
-	@Autowired
+@Autowired
 	IMetier<Reservation> metierReservation;
-	public List<Reservation> getListReservation(){
-		return metierReservation.findAll();
-	}
 
+public List<Reservation> getListReservations()
+{
+	return metierReservation.findAll();
+}
 }

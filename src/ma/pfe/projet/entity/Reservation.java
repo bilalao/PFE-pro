@@ -1,7 +1,5 @@
 package ma.pfe.projet.entity;
 
-
-
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -20,6 +18,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "reservations")
 public class Reservation implements Serializable {
@@ -29,9 +28,7 @@ public class Reservation implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idReservation;
 
-
-	@Column(name="booking_date")
-
+	
 	private Date Res_date;
 	@Column(name = "")
 	private double solde;

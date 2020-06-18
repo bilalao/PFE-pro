@@ -13,11 +13,13 @@ import ma.pfe.projet.metier.IMetier;
 @ManagedBean
 @Component
 public class BeanDestination {
-	@Autowired
-	IMetier<Destination> metierDestination;
 	
-	public List<Destination> getListDestination() {
+	@Autowired
+IMetier<Destination> metierDestination;
+	
+	public List<Destination> getListDestinations()
+	{
 		return metierDestination.findAll();
 	}
-
+	
 }

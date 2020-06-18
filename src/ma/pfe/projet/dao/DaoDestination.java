@@ -2,29 +2,28 @@ package ma.pfe.projet.dao;
 
 import java.util.List;
 
-import javax.print.attribute.standard.Destination;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+import ma.pfe.projet.entity.Destination;
+
 @EnableTransactionManagement
 @Transactional
 @Repository("daoDestination")
-
 public class DaoDestination implements IDAO<Destination> {
+
 	@Autowired
 	SessionFactory sessionFactory;
-
+	
 	@Override
 	public boolean save(Destination o) {
-		try {
+		try {	
 			sessionFactory.getCurrentSession().save(o);
-			System.out.println("Destination is created!");
 			return true;
-
+			
 		} catch (Exception e) {
 			return false;
 		}
@@ -32,13 +31,11 @@ public class DaoDestination implements IDAO<Destination> {
 
 	@Override
 	public boolean update(Destination o) {
-
-		try {
+		
+		try {	
 			sessionFactory.getCurrentSession().update(o);
-
-			System.out.println("Done!");
-
 			return true;
+			
 		} catch (Exception e) {
 			return false;
 		}
@@ -46,16 +43,19 @@ public class DaoDestination implements IDAO<Destination> {
 
 	@Override
 	public boolean delete(Destination o) {
-		try {
-
+		try {	
 			sessionFactory.getCurrentSession().delete(o);
-			System.out.println("Destination is deleted");
 			return true;
+			
 		} catch (Exception e) {
-			e.printStackTrace();
 			return false;
 		}
+	}
 
+	@Override
+	public boolean validate(String userName, String password) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
@@ -65,8 +65,8 @@ public class DaoDestination implements IDAO<Destination> {
 
 	@Override
 	public Destination findById(int id) {
-		System.out.println("Destination id:" + id);
-		return sessionFactory.getCurrentSession().get(Destination.class, id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,7 +1,6 @@
 package ma.pfe.projet.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,11 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//import org.springframework.context.annotation.ComponentScan;
-//import org.springframework.context.annotation.Configuration;
-
-//@Configuration
-//@ComponentScan("ma.pfe.projet.entity")
 @Entity
 @Table(name = "bus")
 public class Bus implements Serializable {
@@ -99,14 +93,7 @@ public class Bus implements Serializable {
 	public Bus() {
 		super();
 	}
-	public void addDestination(Destination theReview) {
-		
-		if (destinations == null) {
-			destinations = new ArrayList<>();
-		}
-		
-		destinations.add(theReview);
-	}
+	
 
 	@Override
 	public String toString() {

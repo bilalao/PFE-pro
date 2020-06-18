@@ -10,21 +10,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ma.pfe.projet.entity.Reservation;
 
+
 @EnableTransactionManagement
 @Transactional
 @Repository("daoReservation")
+public class DaoReservation implements IDAO <Reservation> {
 
-public class DaoReservation implements IDAO<Reservation> {
 	@Autowired
 	SessionFactory sessionFactory;
-
+	
 	@Override
 	public boolean save(Reservation o) {
-		try {
+		
+		try {	
 			sessionFactory.getCurrentSession().save(o);
-			System.out.println("Reservation is created!");
 			return true;
-
+			
 		} catch (Exception e) {
 			return false;
 		}
@@ -32,12 +33,11 @@ public class DaoReservation implements IDAO<Reservation> {
 
 	@Override
 	public boolean update(Reservation o) {
-		try {
+		
+		try {	
 			sessionFactory.getCurrentSession().update(o);
-
-			System.out.println("Done!");
-
 			return true;
+			
 		} catch (Exception e) {
 			return false;
 		}
@@ -45,18 +45,22 @@ public class DaoReservation implements IDAO<Reservation> {
 
 	@Override
 	public boolean delete(Reservation o) {
-		try {
-
+		
+		try {	
 			sessionFactory.getCurrentSession().delete(o);
-			System.out.println("Reservation is deleted");
 			return true;
+			
 		} catch (Exception e) {
-			e.printStackTrace();
 			return false;
 		}
-
+		
 	}
 
+	@Override
+	public boolean validate(String userName, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	@Override
 	public List<Reservation> findAll() {
@@ -65,8 +69,8 @@ public class DaoReservation implements IDAO<Reservation> {
 
 	@Override
 	public Reservation findById(int id) {
-		System.out.println("Reservation id:" + id);
-		return sessionFactory.getCurrentSession().get(Reservation.class, id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

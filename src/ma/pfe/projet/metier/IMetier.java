@@ -9,5 +9,5 @@ public interface IMetier <T> {
 	boolean delete(T o);
 	T findById(int id);
 	List<T> findAll();
-	List<T> searchByType(String famille);
+	boolean validate(String userName, String password);
 }
