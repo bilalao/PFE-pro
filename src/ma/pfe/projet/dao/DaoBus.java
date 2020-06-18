@@ -74,10 +74,4 @@ public class DaoBus implements IDAO<Bus> {
 		return sessionFactory.getCurrentSession().createQuery("from Bus").getResultList();
 	}
 
-	@Override
-	public boolean validate(String userName, String password) {
-
-		return false;
-	}
-
 }

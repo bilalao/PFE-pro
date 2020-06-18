@@ -10,32 +10,32 @@ import ma.pfe.projet.entity.Reservation;
 @Service
 public class MetierReservation implements IMetier<Reservation> {
 	@Autowired
-	IDAO<Reservation> daoreservation;
+	IDAO<Reservation> daoReservation;
 	
 	@Override
 	public boolean save(Reservation o) {
 		
-		return daoreservation.save(o);
+		return daoReservation.save(o);
 	}
 
 	@Override
 	public boolean update(Reservation o) {
-		return daoreservation.update(o);
+		return daoReservation.update(o);
 	}
 
 	@Override
 	public boolean delete(Reservation o) {
-		return daoreservation.delete(o);
+		return daoReservation.delete(o);
 	}
 
 	@Override
 	public Reservation findById(int id) {
-		return daoreservation.findById(id);
+		return daoReservation.findById(id);
 	}
 
 	@Override
 	public List<Reservation> findAll() {
-		return daoreservation.findAll();
+		return daoReservation.findAll();
 	}
 
 	@Override

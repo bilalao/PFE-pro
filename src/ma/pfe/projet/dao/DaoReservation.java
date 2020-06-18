@@ -57,11 +57,6 @@ public class DaoReservation implements IDAO<Reservation> {
 
 	}
 
-	@Override
-	public boolean validate(String userName, String password) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public List<Reservation> findAll() {

@@ -1,6 +1,7 @@
 package ma.pfe.projet.entity;
 
 
+
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -28,7 +29,9 @@ public class Reservation implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idReservation;
 
+
 	@Column(name="booking_date")
+
 	private Date Res_date;
 	@Column(name = "")
 	private double solde;

@@ -31,33 +31,6 @@ public class DaoClient implements IDAO<Client> {
 
 	}
 
-	public boolean validate(String email, String password) {
-
-		/*
-		 * Transaction transaction = null;
-		 * 
-		 * try (Session session = HibernateUtils.getSessionFactory().openSession()) {
-		 * transaction = session.beginTransaction();
-		 * 
-		 * String em = (String)
-		 * session.createQuery("SELECT U.email FROM User U WHERE U.email=:n")
-		 * .setParameter("n", email).uniqueResult(); if (em != null) { String q =
-		 * (String)
-		 * session.createQuery("SELECT U.password FROM User U WHERE U.email=:p")
-		 * .setParameter("p", em).uniqueResult(); if (q.equals(password)) { return true;
-		 * } else { return false; }
-		 * 
-		 * } else { return false; }
-		 * 
-		 * }
-		 * 
-		 * catch (Exception e) { if (transaction != null) { transaction.rollback(); }
-		 * e.printStackTrace(); }
-		 */
-		return false;
-
-	}
-
 	@Override
 	public boolean update(Client o) {
 
