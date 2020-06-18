@@ -11,36 +11,36 @@ import ma.pfe.projet.entity.Destination;
 @Service
 public class MetierDestination implements IMetier<Destination> {
 	@Autowired
-	IDAO<Destination> daodestination;
+	IDAO<Destination> daoDestination;
 
 	@Override
 	public boolean create(Destination o) {
 
-		return daodestination.save(o);
+		return daoDestination.save(o);
 	}
 
 	@Override
 	public boolean update(Destination o) {
 
-		return daodestination.update(o);
+		return daoDestination.update(o);
 	}
 
 	@Override
 	public boolean delete(Destination o) {
 
-		return daodestination.delete(o);
+		return daoDestination.delete(o);
 	}
 
 	@Override
 	public Destination findById(int id) {
 
-		return daodestination.findById(id);
+		return daoDestination.findById(id);
 	}
 
 	@Override
 	public List<Destination> findAll() {
 
-		return daodestination.findAll();
+		return daoDestination.findAll();
 	}
 
 	@Override

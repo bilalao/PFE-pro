@@ -5,8 +5,6 @@ import java.util.List;
 
 
 public interface IDAO<T> {
-	String tableName = null;
-
 	boolean save(T o);
 
 	boolean update(T o);
@@ -14,10 +12,10 @@ public interface IDAO<T> {
 	boolean delete(T o);
 
 	// String GetTableName();
-	default void SetById(int id) {
-	};
+	/*default void SetById(int id) {
+	}; */
 
-	boolean validate(String userName, String password);
+	//boolean validate(String userName, String password);
 
 	List<T> findAll();
 

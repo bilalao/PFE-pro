@@ -13,6 +13,7 @@ import ma.pfe.projet.metier.IMetier;
 @ManagedBean
 @Component
 public class BeanStation {
+	
 	@Autowired
 	IMetier<Station> metierStation;
 	public List<Station> getListStation(){

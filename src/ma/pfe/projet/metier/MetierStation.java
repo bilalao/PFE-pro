@@ -10,35 +10,35 @@ import ma.pfe.projet.entity.Station;
 @Service
 public class MetierStation implements IMetier<Station> {
 	@Autowired
-	IDAO<Station> daostation;
+	IDAO<Station> daoStation;
 	@Override
 	public boolean create(Station o) {
 		
-		return daostation.save(o);
+		return daoStation.save(o);
 	}
 
 	@Override
 	public boolean update(Station o) {
 		
-		return daostation.update(o);
+		return daoStation.update(o);
 	}
 
 	@Override
 	public boolean delete(Station o) {
 	
-		return daostation.delete(o);
+		return daoStation.delete(o);
 	}
 
 	@Override
 	public Station findById(int id) {
 		
-		return daostation.findById(id);
+		return daoStation.findById(id);
 	}
 
 	@Override
 	public List<Station> findAll() {
 	
-		return daostation.findAll();
+		return daoStation.findAll();
 	}
 
 	@Override

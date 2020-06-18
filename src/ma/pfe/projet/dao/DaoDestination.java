@@ -59,12 +59,6 @@ public class DaoDestination implements IDAO<Destination> {
 	}
 
 	@Override
-	public boolean validate(String userName, String password) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public List<Destination> findAll() {
 		return sessionFactory.getCurrentSession().createQuery("from Destination").getResultList();
 	}

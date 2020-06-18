@@ -58,12 +58,6 @@ public class DaoStation implements IDAO<Station> {
 	}
 
 	@Override
-	public boolean validate(String userName, String password) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public List<Station> findAll() {
 		return sessionFactory.getCurrentSession().createQuery("from Station").getResultList();
 	}
