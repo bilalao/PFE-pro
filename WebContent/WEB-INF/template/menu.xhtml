@@ -1,42 +1,44 @@
-<aside>
-      <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
-         
-          <li class="mt">
-            <a href="/BusManagement/do/user/accueil">
-              <i class="fa fa-dashboard"></i>
-              <span>Acceuil</span>
-              </a>
-          </li>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-          <li class="mt">
-            <a href="/BusManagement/c/client">
-              <i class="fa fa-dashboard"></i>
-              <span>Clients</span>
-              </a>
-          </li>
+<h:head></h:head>
+<body>
 
-          <li class="mt">
-            <a href="/BusManagement/b/list">
-              <i class="fa fa-dashboard"></i>
-              <span>All Bus</span>
-              </a>
-          </li>
+	<ui:composition>
+		<h:form>
+			<p:panelMenu>
+				<p:submenu label="Client">
+					<p:menuitem value="Liste des clients" action="listclient"/>
+					<p:menuitem value="Statistiques" icon="pi pi-chart-line" />
+				</p:submenu>
 
-          <li class="mt">
-            <a href="/BusManagement/s/list">
-              <i class="fa fa-dashboard"></i>
-              <span>Stations</span>
-              </a>
-          </li>
+				<p:submenu label="Bus">
+					<p:menuitem value="Liste des Bus" action="listbus" />
+					<p:menuitem value="Statistiques" icon="pi pi-chart-line"/>
+				</p:submenu>
 
-          <li class="mt">
-            <a href="/BusManagement/d/list">
-              <i class="fa fa-dashboard"></i>
-              <span>Destinations</span>
-              </a>
-          </li>
-        </ul>
-       </div>   
-    </aside>
+				<p:submenu label="destination">
+					<p:menuitem value="Liste des destination" action="listdestination"/>
+					<p:menuitem value="Statistiques" icon="pi pi-chart-line"/>
+				</p:submenu>
+
+				<p:submenu label="Station">
+					<p:menuitem value="Liste des Station" action="liststation"/>
+					<p:menuitem value="Statistiques" />
+				</p:submenu>
+
+				<p:submenu label="Reservation">
+					<p:menuitem value="Liste des Reservation" action="listreservation"/>
+					<p:menuitem value="Ajouter une commande" />
+					<p:menuitem value="Calendrier des commandes" action="calendriercom"/>
+					<p:menuitem value="Statistiques" icon="pi pi-chart-line"/>
+				</p:submenu>
+			</p:panelMenu>
+		</h:form>
+	</ui:composition>
+</body>
+</html>

@@ -11,20 +11,20 @@
 		<ui:define name="content">
 			<p:dataTable value="#{beanClient.listClients}" var="c" paginator="true" rows="10">
 				<f:facet name="header">Liste des clients</f:facet>
-				<p:column headerText="Numero">
+				<p:column headerText="Number">
 					#{c.numcli}
 				</p:column>
-				<p:column headerText="Nom">
+				<p:column headerText="Name">
 					#{c.name}
-				</p:column>
-				<p:column headerText="Adresse">
-					#{c.adresse}
-				</p:column>
-				<p:column headerText="Tel">
-					#{c.phone}
 				</p:column>
 				<p:column headerText="Email">
 					#{c.email}
+				</p:column>
+				<p:column headerText="Phnoe">
+					#{c.phone}
+				</p:column>
+				<p:column headerText="Adress">
+					#{c.address}
 				</p:column>
 			</p:dataTable>
 		</ui:define>
