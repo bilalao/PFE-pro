@@ -13,7 +13,7 @@ public class MetierReservation implements IMetier<Reservation> {
 	IDAO<Reservation> daoreservation;
 	
 	@Override
-	public boolean create(Reservation o) {
+	public boolean save(Reservation o) {
 		
 		return daoreservation.save(o);
 	}

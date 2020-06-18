@@ -14,7 +14,7 @@ public class MetierClient implements IMetier<Client> {
 	IDAO<Client> daoClient;
 
 	@Override
-	public boolean create(Client o) {
+	public boolean save(Client o) {
 		return daoClient.save(o);
 	}
 

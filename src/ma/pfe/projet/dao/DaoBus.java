@@ -12,7 +12,7 @@ import ma.pfe.projet.entity.Bus;
 
 @EnableTransactionManagement
 @Transactional
-@Repository("daoBus")
+@Repository
 public class DaoBus implements IDAO<Bus> {
 	
 	@Autowired
@@ -22,9 +22,9 @@ public class DaoBus implements IDAO<Bus> {
 	public boolean save(Bus o) {
 		try {
 
-			System.out.println("Saving the Bus...");
+			
 			sessionFactory.getCurrentSession().save(o);
-			System.out.println(" the Bus Saved...");
+			
 			return true;
 
 		} catch (Exception e) {

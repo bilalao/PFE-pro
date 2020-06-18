@@ -12,7 +12,7 @@ public class MetierStation implements IMetier<Station> {
 	@Autowired
 	IDAO<Station> daostation;
 	@Override
-	public boolean create(Station o) {
+	public boolean save(Station o) {
 		
 		return daostation.save(o);
 	}

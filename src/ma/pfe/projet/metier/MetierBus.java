@@ -16,7 +16,7 @@ public class MetierBus implements IMetier<Bus> {
 	IDAO<Bus> daoBus;
 
 	@Override
-	public boolean create(Bus o) {
+	public boolean save(Bus o) {
 		return daoBus.save(o);
 	}
 
