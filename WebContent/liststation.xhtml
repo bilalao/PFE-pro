@@ -16,75 +16,97 @@
 					toggleSpeed="1000" style="margin-bottom:40px; margin-bottom:20px;">
 
 					<div class="p-grid p-dir-col-rev">
-					    <div class="p-col" style="margin-bottom: 10px;">
-					        <p:outputLabel value="Nom de Station : " for="nomsta" />
-							<p:inputText value="#{beanStation.sta.name}" id="nomsta" required="true" requiredMessage="Nom de Station est vide"/>
-					    </div>
-					    <div class="p-col" style="margin-bottom: 10px;">
-					        <p:outputLabel value="Adresse : " for="adresse" />
-							<p:inputNumber value="#{beanStation.sta.adrs}" id="adresse" required="true" requiredMessage="Adresse est vide"/>
-					    </div>
-					    <div class="p-col" style="margin-bottom: 10px;">
-					        <p:outputLabel value="Contact : " for="contact" />
-							<p:inputNumber value="#{beanContact.cnt.contact}" id="contact" required="true" requiredMessage="Contact est vide"/>
-					    </div>
-					    <div class="p-col" style="margin-bottom: 10px;">
-					        <p:commandButton value="Enregistrer" icon="pi pi-save" action="#{beanStation.save()}" update=":formStation1 :formStation2"/>
-					    </div>
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel value="Nom de Station : " for="nomsta" />
+							<p:inputText value="#{beanStation.sta.name}" id="nomsta"
+								required="true" requiredMessage="Nom de Station est vide" />
+						</div>
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel value="Adresse : " for="adresse" />
+							<p:inputText value="#{beanStation.sta.address}" id="adresse"
+								required="true" requiredMessage="Adresse est vide" />
+						</div>
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel value="Contact : " for="contact" />
+							<p:inputText value="#{beanStation.sta.contact}" id="contact"
+								required="true" requiredMessage="Contact est vide" />
+						</div>
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:commandButton value="Enregistrer" icon="pi pi-save"
+								action="#{beanStation.save()}"
+								update=":formStation1 :formStation2" />
+						</div>
 					</div>
 				</p:panel>
 			</h:form>
 			<h:form id="formStation2">
-			
+
 				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
-				
+
 				<p:dataTable value="#{beanStation.listStations}" var="r"
-					paginator="true" rows="10" id="tablestation" selectionMode="single" selection="#{beanStation.selectedStation}" rowKey="#{r.id}">
+					paginator="true" rows="10" id="tablestation" selectionMode="single"
+					selection="#{beanStation.selectedStation}" rowKey="#{r.idStation}">
 					<f:facet name="header">Liste des stations</f:facet>
 					<p:column headerText="Numero">
-						#{r.id}
+						#{r.idStation}
 					</p:column>
-	
+
 					<p:column headerText="Nom">
 						#{r.name}
 					</p:column>
-	
+
 					<p:column headerText="Adresse">
-						#{r.adrs}
+						#{r.address}
 					</p:column>
-				
+					<p:column headerText="Contact">
+						#{r.contact}
+					</p:column>
+
 				</p:dataTable>
-				
-				<p:contextMenu for="tablerstation">
-					<p:menuitem value="Modifier" icon="pi pi-user-edit"  oncomplete="PF('dlg').show();" update=":formStation3:panelstation"/>
-			        <p:menuitem value="Supprimer" icon="pi pi-trash" update=":formStation2" action="#{beanStation.delete()}">
-			        	<p:confirm header="Confirmation de suppression" message="Voulez-vous supprimer cette station?" icon="pi pi-exclamation-triangle" />
-			        </p:menuitem>
-    			</p:contextMenu>
-    			
-    			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"> 
-			        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-			        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-			    </p:confirmDialog>
+
+				<p:contextMenu for="tablestation">
+					<p:menuitem value="Modifier" icon="pi pi-refresh"
+						oncomplete="PF('dlg').show();" update=":formStation3:panelstation" />
+					<p:menuitem value="Supprimer" icon="pi pi-trash"
+						update=":formStation2" action="#{beanStation.delete()}">
+						<p:confirm header="Confirmation de suppression"
+							message="Voulez-vous supprimer cette station?"
+							icon="pi pi-exclamation-triangle" />
+					</p:menuitem>
+				</p:contextMenu>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Oui" type="button"
+						styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					<p:commandButton value="Non" type="button"
+						styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+				</p:confirmDialog>
 			</h:form>
 			<h:form id="formStation3">
-			
+
 				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
-				
-			    <p:dialog header="Modification Station" widgetVar="dlg" resizable="false">
-			        <h:panelGrid id="panelstation" columns="2" cellpadding="5">
-			            <h:outputLabel for="nomr" value="Nom de station : " />
-			            <p:inputText id="nomr" value="#{beanStation.selectedStation.name}" required="true" label="Nom de station"  />
-			             
-			            <h:outputLabel for="contact" value="Contact : " />
-			            <p:inputText id="nbhr" value="#{beanContact.selectedContact.contact}" required="true" label="Contact" />
-			             
-			            <f:facet name="footer">
-			                <p:commandButton value="Mettre a jour" update="growl :formStation2:tablestation" action="#{beanStation.update()}" oncomplete="handleLoginRequest(xhr, status, args);" />
-			                <p:commandButton value="Annuler" onclick="PF('dlg').hide();" />
-			            </f:facet>  
-			        </h:panelGrid>
-			    </p:dialog>    
+
+				<p:dialog header="Modification Station" widgetVar="dlg"
+					resizable="false">
+					<h:panelGrid id="panelstation" columns="2" cellpadding="5">
+						<h:outputLabel for="nomr" value="Nom de station : " />
+						<p:inputText id="nomr" value="#{beanStation.selectedStation.name}"
+							required="true" label="Nom de station" />
+
+						<h:outputLabel for="contact" value="Contact : " />
+						<p:inputText id="contact"
+							value="#{beanStation.selectedStation.contact}" required="true"
+							label="Contact" />
+
+						<f:facet name="footer">
+							<p:commandButton value="Mettre a jour"
+								update="growl :formStation2:tablestation"
+								action="#{beanStation.update()}"
+								oncomplete="handleLoginRequest(xhr, status, args);" />
+							<p:commandButton value="Annuler" onclick="PF('dlg').hide();" />
+						</f:facet>
+					</h:panelGrid>
+				</p:dialog>
 			</h:form>
 			<script type="text/javascript">
 		    function handleLoginRequest(xhr, status, args) {

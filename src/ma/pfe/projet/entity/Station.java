@@ -10,64 +10,64 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "stations")
 public class Station implements Serializable {
 
-private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column
-private int id;
-@Column
-private String adrs;
-@Column
-private String contact;
-@Column
-private String name;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idStation")
+	private int idStation;
+	@Column(name = "address")
+	private String address;
+	@Column(name = "contact")
+	private String contact;
+	@Column(name = "name")
+	private String name;
 
-public String getName() {
-	return name;
-}
+	public String getName() {
+		return name;
+	}
 
-public void setName(String name) {
-	this.name = name;
-}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-public int getId() {
-	return id;
-}
+	public int getidStation() {
+		return idStation;
+	}
 
-public void setId(int id) {
-	this.id = id;
-}
+	public void setidStation(int idStation) {
+		this.idStation = idStation;
+	}
 
-public String getAdrs() {
-	return adrs;
-}
+	public String getaddress() {
+		return address;
+	}
 
-public void setAdrs(String adrs) {
-	this.adrs = adrs;
-}
+	public void setaddress(String address) {
+		this.address = address;
+	}
 
-public String getContact() {
-	return contact;
-}
+	public String getContact() {
+		return contact;
+	}
 
-public void setContact(String contact) {
-	this.contact = contact;
-}
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
 
-public Station(int id, String adrs, String contact, String name) {
-	super();
-	this.id = id;
-	this.adrs = adrs;
-	this.contact = contact;
-	this.name = name;
-}
+	public Station(int idStation, String address, String contact, String name) {
+		super();
+		this.idStation = idStation;
+		this.address = address;
+		this.contact = contact;
+		this.name = name;
+	}
 
-public Station() {
-	super();
-}
+	public Station() {
+		super();
+	}
 
 }

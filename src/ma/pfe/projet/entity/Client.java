@@ -1,7 +1,7 @@
 package ma.pfe.projet.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+//import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,8 +20,8 @@ public class Client implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="numcli")
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
+	@Column(name="numcli")
 	private int numcli;
 
 	@Column(name="address")
@@ -39,8 +39,8 @@ public class Client implements Serializable{
 	@Column(name="phone")
 	private String phone;
 	
-	@Column( name = "date_inscription" )
-	private Timestamp dateInscription;
+	//@Column( name = "date_inscription" )
+	//private Timestamp dateInscription;
 	
 	 @OneToMany(mappedBy = "client",fetch = FetchType.LAZY)
 	 private List<Reservation> reservations;
@@ -122,6 +122,7 @@ public class Client implements Serializable{
 				+ ", password=" + password + ", phone=" + phone + "]";
 	}
 
+	/*
 	public Timestamp getDateInscription() {
 		return dateInscription;
 	}
@@ -129,7 +130,7 @@ public class Client implements Serializable{
 	public void setDateInscription(Timestamp dateInscription) {
 		this.dateInscription = dateInscription;
 	}
-	
+	*/
 
 	
 

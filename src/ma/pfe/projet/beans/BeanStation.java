@@ -22,7 +22,7 @@ public class BeanStation {
 	@Autowired
 	IMetier<Station> metierStation;
 	
-Station sta = new Station();
+	Station sta = new Station();
 	Station selectedStation = new Station();
 	
 	public Station getSelectedStation() {
@@ -55,7 +55,7 @@ Station sta = new Station();
 		}
 		
 		sta.setName(""); 
-		sta.setAdrs("");
+		sta.setaddress("");
 		sta.setContact("");
 	}
 	

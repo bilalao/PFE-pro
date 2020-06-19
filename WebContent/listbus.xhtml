@@ -1,33 +1,126 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<body> 
+<h:head></h:head>
+<body>
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		<ui:define name="content">
-			<p:dataTable value="#{beanBus.listBus}" var="c" paginator="true" rows="10">
-				<f:facet name="header">Liste des bus</f:facet>
-				<p:column headerText="Numero">
+			<h:form id="formbus1">
+				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
+				<p:panel id="toggleable" header="Ajouter Bus" toggleable="true"
+					toggleSpeed="1000" style="margin-bottom:40px; margin-bottom:20px;">
+
+					<div class="p-grid p-dir-col-rev">
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel value="Nom de Bus : " for="nombus" />
+							<p:inputText value="#{beanBus.newbus.name}" id="nombus"
+								required="true" requiredMessage="Nom de Bus est vide" />
+						</div>
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel value="Matricule : " for="matricule" />
+							<p:inputText value="#{beanBus.newbus.matricule}" id="matricule"
+								required="true" requiredMessage="Matricule est vide" />
+						</div>
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel value="Total Seat : " for="total_seat" />
+							<p:inputText value="#{beanBus.newbus.total_seat}" id="total_seat"
+								required="true" requiredMessage="Total Seat est vide" />
+						</div>
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel value="Bus Type : " for="type" />
+							<p:inputText value="#{beanBus.newbus.type}" id="type"
+								required="true" requiredMessage="Type est vide" />
+						</div>
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:commandButton value="Enregistrer" icon="pi pi-save"
+								action="#{beanBus.save()}"
+								update=":formbus1 :formbus2" />
+						</div>
+					</div>
+				</p:panel>
+			</h:form>
+			<h:form id="formbus2">
+				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
+					
+				<p:dataTable value="#{beanBus.listBus}" var="c"
+					paginator="true" rows="10" id="tablebus" selectionMode="single"
+					selection="#{beanBus.selectedBus}" rowKey="#{c.idBus}">
+					
+					<f:facet name="header">Liste des Bus</f:facet>
+					<p:column headerText="Numero">
 					#{c.idBus}
 				</p:column>
-				<p:column headerText="Matricule">
+					<p:column headerText="Matricule">
 					#{c.matricule}
 				</p:column>
-				<p:column headerText="places">
+					<p:column headerText="places">
 					#{c.total_seat}
 				</p:column>
-				<p:column headerText="Nom">
+					<p:column headerText="Nom">
 					#{c.name}
 				</p:column>
-				<p:column headerText="Type">
+					<p:column headerText="Type">
 					#{c.type}
 				</p:column>
-			</p:dataTable>
+				</p:dataTable>
+				<p:contextMenu for="tablebus">
+					<p:menuitem value="Modifier" icon="pi pi-refresh"
+						oncomplete="PF('dlg').show();" update=":formbus3:panelbus" />
+					<p:menuitem value="Supprimer" icon="pi pi-trash"
+						update=":formbus2" action="#{beanBus.delete()}">
+						<p:confirm header="Confirmation de suppression"
+							message="Voulez-vous supprimer cette Bus?"
+							icon="pi pi-exclamation-triangle" />
+					</p:menuitem>
+				</p:contextMenu>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Oui" type="button"
+						styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					<p:commandButton value="Non" type="button"
+						styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+				</p:confirmDialog>
+			</h:form>
+			<h:form id="formbus3">
+
+				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
+
+				<p:dialog header="Modification Bus" widgetVar="dlg"
+					resizable="false">
+					<h:panelGrid id="panelbus" columns="2" cellpadding="5">
+						<h:outputLabel for="nameb" value="Nom de Bus : " />
+						<p:inputText id="nameb" value="#{beanBus.selectedBus.name}"
+							required="true" label="Nom de Bus" />
+
+						<h:outputLabel for="matricule" value="Matricule : " />
+						<p:inputText id="matricule"
+							value="#{beanBus.selectedBus.matricule}" required="true"
+							label="Contact" />
+
+						<f:facet name="footer">
+							<p:commandButton value="Mettre a jour"
+								update="growl :formbus2:tablebus"
+								action="#{beanBus.update()}"
+								oncomplete="handleLoginRequest(xhr, status, args);" />
+							<p:commandButton value="Annuler" onclick="PF('dlg').hide();" />
+						</f:facet>
+					</h:panelGrid>
+				</p:dialog>
+			</h:form>
+			<script type="text/javascript">
+		    function handleLoginRequest(xhr, status, args) {
+		        if(args.validationFailed || !args.loggedIn) {
+		            PF('dlg').jq.effect("shake", {times:5}, 100);
+		        }else {
+		        	PF('dlg').hide();
+			    }
+		    }
+		</script>
 		</ui:define>
 	</ui:composition>
-</body> 
+</body>
 </html>
