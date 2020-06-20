@@ -3,6 +3,7 @@
   <display-name>BusManagement</display-name>
   <welcome-file-list>
     <welcome-file>index.xhtml</welcome-file>
+    <welcome-file>login.xhtml</welcome-file>
   </welcome-file-list>
   
    <listener>
@@ -36,7 +37,12 @@
   </context-param>
   
   <context-param>
+    <param-name>primefaces.FONT_AWESOME</param-name>
+    <param-value>true</param-value>
+</context-param>
+  <context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>start</param-value>
 	</context-param>
+
 </web-app>
