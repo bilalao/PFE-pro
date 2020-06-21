@@ -6,10 +6,14 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
 import javax.persistence.Table;
 
 @Entity
@@ -30,9 +34,14 @@ public class Bus implements Serializable {
 	@Column(name = "type")
 	private String type;
 	
-	@OneToMany(mappedBy="bus", 
+	@ManyToMany(fetch = FetchType.LAZY, 
 			cascade={CascadeType.DETACH, CascadeType.MERGE,
 					 CascadeType.PERSIST,CascadeType.REFRESH})
+	@JoinTable(
+			name="destination_has_bus",
+			joinColumns=@JoinColumn(name="bus_idBus "),
+			inverseJoinColumns=@JoinColumn(name=" destination_idDest")
+			)
 	private List<Destination> destinations;
 	
 	public List<Destination> getDestinations() {

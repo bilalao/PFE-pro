@@ -65,8 +65,8 @@ public class DaoDestination implements IDAO<Destination> {
 
 	@Override
 	public Destination findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Destination id:" + id);
+		return sessionFactory.getCurrentSession().get(Destination.class, id);
 	}
 
 }

@@ -15,37 +15,31 @@ public class MetierDestination implements IMetier<Destination> {
 	IDAO<Destination> daoDestination;
 	@Override
 	public boolean save(Destination o) {
-		// TODO Auto-generated method stub
 		return daoDestination.save(o);
 	}
 
 	@Override
 	public boolean update(Destination o) {
-		// TODO Auto-generated method stub
 		return daoDestination.update(o);
 	}
 
 	@Override
 	public boolean delete(Destination o) {
-		// TODO Auto-generated method stub
 		return daoDestination.delete(o);
 	}
 
 	@Override
 	public Destination findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoDestination.findById(id);
 	}
 
 	@Override
 	public List<Destination> findAll() {
-		// TODO Auto-generated method stub
 		return daoDestination.findAll();
 	}
 
 	@Override
 	public boolean validate(String userName, String password) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
