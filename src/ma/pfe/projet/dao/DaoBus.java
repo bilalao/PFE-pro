@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ma.pfe.projet.entity.Bus;
 
+
 @EnableTransactionManagement
 @Transactional
 @Repository("daoBus")
@@ -64,8 +65,8 @@ public class DaoBus implements IDAO<Bus> {
 
 	@Override
 	public Bus findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Bus id:" + id);
+		return sessionFactory.getCurrentSession().get(Bus.class, id);
 	}
 
 }

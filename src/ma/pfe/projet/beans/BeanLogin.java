@@ -44,5 +44,9 @@ public class  BeanLogin {
          
         FacesContext.getCurrentInstance().addMessage(null, message);
         PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
-    }   
+    }  
+    public String doLogout() {
+    	FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+    	return "/logout.xhtml";
+    }
 }
