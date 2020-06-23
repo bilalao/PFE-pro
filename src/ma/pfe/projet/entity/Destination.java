@@ -1,7 +1,7 @@
 package ma.pfe.projet.entity;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -127,7 +127,25 @@ public class Destination implements Serializable {
 		this.fare = fare;
 
 	}
+	
+	public Destination() {
+		super();
+	}
 
+	public void addStation(Station theStation)
+	{
+		if(stations == null) {
+			stations = new ArrayList<>();
+		}
+		stations.add(theStation);
+	}
+	public void addBus(Bus theBus)
+	{
+		if(bus == null) {
+			bus = new ArrayList<>();
+		}
+		bus.add(theBus);
+	}
 	@Override
 	public String toString() {
 		return "Destination [idDest=" + idDest + ", stations=" + stations + ", bus=" + bus + ", station_from="

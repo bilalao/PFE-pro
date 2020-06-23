@@ -1,39 +1,86 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<body> 
+<h:head></h:head>
+<body>
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		<ui:define name="content">
-			<p:dataTable value="#{beanDestination.listDestinations}" var="c" paginator="true" rows="10">
-				<f:facet name="header">Liste des destinations</f:facet>
-				<p:column headerText="Numero">
-					#{c.idDest}
-				</p:column>
-				<p:column headerText="Matricule">
-					#{c.station}
-				</p:column>
-				<p:column headerText="places">
-					#{c.bus}
-				</p:column>
-				<p:column headerText="Nom">
-					#{c.time}
-				</p:column>
-				<p:column headerText="Type">
-					#{c.type}
-				</p:column>
-				<p:column headerText="Statut">
-					#{c.status}
-				</p:column>
-				<p:column headerText="Fare">
-					#{c.fare}
-				</p:column>
-			</p:dataTable>
+			<h:form>
+				<p:growl id="msgs" showDetail="true"
+					skipDetailIfEqualsSummary="true" />
+
+				<p:panel id="Information" header="Information"
+					footer="Select bus and Station from" style="margin-bottom:20px">
+					<h:panelGrid columns="2" cellpadding="10">
+						<!--  <f:event listener="#{beanDestination.init()}" type="preRenderView"/>-->
+						<div  class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel for="@next" value="Select Station From: " />
+							<p:selectOneMenu id="from" value="#{beanDestination.city}"
+								effect="fold" editable="true">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItems value="#{beanDestination.cities}" />
+							</p:selectOneMenu>
+						</div>
+						<div  class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel for="@next" value="Select Station From: " />
+							<p:selectOneMenu id="to" value="#{beanDestination.city}"
+								effect="fold" editable="true">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItems value="#{beanDestination.cities}" />
+							</p:selectOneMenu>
+						</div>
+						<div  class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel for="@next" value="Select Bus: " />
+							<p:selectOneMenu id="bus" value="#{beanDestination.bus}"
+								effect="fold" editable="true">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItems value="#{beanDestination.buss}" />
+							</p:selectOneMenu>
+						</div>
+						<div  class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel value="Time : " for="time" />
+							<p:inputText value="" id="time" required="true"
+								requiredMessage="Time est vide" />
+							<p:outputLabel value="fare : " for="fare" />
+							<p:inputText value="" id="fare" required="true"
+								requiredMessage="Fare est vide" />
+						</div>
+
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+			<h:form>
+				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
+
+				<p:dataTable value="table">
+					<f:facet name="header">Liste des Destinations</f:facet>
+					<p:column headerText="St_from">
+						<h:outputText value="..." />
+					</p:column>
+
+					<p:column headerText="st_to">
+						<h:outputText value="..." />
+					</p:column>
+
+					<p:column headerText="Time">
+						<h:outputText value="..." />
+					</p:column>
+
+					<p:column headerText="Fare">
+						<h:outputText value="..." />
+					</p:column>
+
+					<p:column headerText="Total_seat">
+						<h:outputText value="..." />
+					</p:column>
+				</p:dataTable>
+
+			</h:form>
 		</ui:define>
 	</ui:composition>
-</body> 
+</body>
 </html>

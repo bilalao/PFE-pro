@@ -1,7 +1,6 @@
 package ma.pfe.projet.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -86,13 +85,7 @@ public class Station implements Serializable {
 	public Station() {
 		super();
 	}
-	public void addDestination(Destination theDestination)
-	{
-		if(destinations == null) {
-			destinations = new ArrayList<>();
-		}
-		destinations.add(theDestination);
-	}
+	
 	
 	@Override
 	public String toString() {

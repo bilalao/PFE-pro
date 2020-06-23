@@ -39,10 +39,6 @@ public class BeanBus {
 	public void setnewbus(Bus newbus) {
 		this.newbus = newbus;
 	}
-
-	public List<Bus> getListBuss() {
-		return metierBus.findAll();
-	}
 	
 	public void save() {
 		FacesContext context = FacesContext.getCurrentInstance();
