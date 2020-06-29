@@ -1,6 +1,7 @@
 package ma.pfe.projet.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -24,7 +25,7 @@ public class Station implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idStation")
-	
+
 	private int idStation;
 	@Column(name = "address")
 	private String address;
@@ -32,14 +33,10 @@ public class Station implements Serializable {
 	private String contact;
 	@Column(name = "name")
 	private String name;
-	
-	
-	@ManyToMany(fetch = FetchType.LAZY,
-			    cascade = { CascadeType.PERSIST, CascadeType.MERGE, 
-							CascadeType.DETACH, CascadeType.REFRESH })
-	@JoinTable(name = "destination_has_station", 
-					joinColumns = @JoinColumn(name = "station_idStation"),
-					inverseJoinColumns = @JoinColumn(name = "destination_idDest"))
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+			CascadeType.REFRESH })
+	@JoinTable(name = "destination_has_station", joinColumns = @JoinColumn(name = "station_idStation"), inverseJoinColumns = @JoinColumn(name = "destination_idDest"))
 	private List<Destination> destinations;
 
 	public String getName() {
@@ -50,28 +47,21 @@ public class Station implements Serializable {
 		this.name = name;
 	}
 
-	public int getidStation() {
-		return idStation;
-	}
-
-	public void setidStation(int idStation) {
-		this.idStation = idStation;
-	}
-
-	public String getaddress() {
-		return address;
-	}
-
-	public void setaddress(String address) {
-		this.address = address;
-	}
-
 	public String getContact() {
 		return contact;
 	}
 
 	public void setContact(String contact) {
 		this.contact = contact;
+	}
+
+	public void addDestination(Destination theDestination) {
+		if (destinations == null) {
+			destinations = new ArrayList<>();
+		}
+		System.out.println("adding Destination into Station ....");
+		destinations.add(theDestination);
+		System.out.println("Done!");
 	}
 
 	public Station(int idStation, String address, String contact, String name) {
@@ -85,8 +75,31 @@ public class Station implements Serializable {
 	public Station() {
 		super();
 	}
-	
-	
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public List<Destination> getDestinations() {
+		return destinations;
+	}
+
+	public void setDestinations(List<Destination> destinations) {
+		this.destinations = destinations;
+	}
+
+	public int getIdStation() {
+		return idStation;
+	}
+
+	public void setIdStation(int idStation) {
+		this.idStation = idStation;
+	}
+
 	@Override
 	public String toString() {
 		return "Station [idStation=" + idStation + ", address=" + address + ", contact=" + contact + ", name=" + name

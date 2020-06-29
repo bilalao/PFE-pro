@@ -33,8 +33,6 @@ public class Client implements Serializable{
 	@Column(name="name")
 	private String name;
 
-	@Column(name="password")
-	private String password;
 	
 	@Column(name="phone")
 	private String phone;
@@ -86,13 +84,6 @@ public class Client implements Serializable{
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public String getPhone() {
 		return phone;
@@ -102,13 +93,13 @@ public class Client implements Serializable{
 		this.phone = phone;
 	}
 
-	public Client(int numcli, String address, String email, String name, String password, String phone) {
+	public Client(int numcli, String address, String email, String name,  String phone) {
 		super();
 		this.numcli = numcli;
 		this.address = address;
 		this.email = email;
 		this.name = name;
-		this.password = password;
+	
 		this.phone = phone;
 	}
 
@@ -118,10 +109,11 @@ public class Client implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Client [numcli=" + numcli + ", address=" + address + ", email=" + email + ", name=" + name
-				+ ", password=" + password + ", phone=" + phone + "]";
+		return "Client [numcli=" + numcli + ", address=" + address + ", email=" + email + ", name=" + name + ", phone="
+				+ phone + ", reservations=" + reservations + "]";
 	}
 
+	
 	/*
 	public Timestamp getDateInscription() {
 		return dateInscription;

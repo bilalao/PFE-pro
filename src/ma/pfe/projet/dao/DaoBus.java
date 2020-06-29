@@ -64,7 +64,7 @@ public class DaoBus implements IDAO<Bus> {
 
 	@Override
 	public Bus findById(int id) {
-		System.out.println("Bus id:" + id);
+		System.out.println("(DaoBus)Bus id:" + id);
 		return sessionFactory.getCurrentSession().get(Bus.class, id);
 	}
 

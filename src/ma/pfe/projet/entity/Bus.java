@@ -16,6 +16,11 @@ import javax.persistence.ManyToMany;
 
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "bus")
 public class Bus implements Serializable {
@@ -34,14 +39,15 @@ public class Bus implements Serializable {
 	@Column(name = "type")
 	private String type;
 	
-	@ManyToMany(fetch = FetchType.LAZY, 
-			cascade={CascadeType.DETACH, CascadeType.MERGE,
-					 CascadeType.PERSIST,CascadeType.REFRESH})
+	@ManyToMany(fetch = FetchType.EAGER, 
+			cascade={CascadeType.ALL})
 	@JoinTable(
 			name="destination_has_bus",
 			joinColumns=@JoinColumn(name="bus_idBus "),
 			inverseJoinColumns=@JoinColumn(name=" destination_idDest")
 			)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@Fetch(value= FetchMode.SUBSELECT)
 	private List<Destination> destinations;
 	
 	public List<Destination> getDestinations() {

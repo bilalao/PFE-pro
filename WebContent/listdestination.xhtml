@@ -9,7 +9,7 @@
 <body>
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		<ui:define name="content">
-			<h:form>
+			<h:form id="formdest1">
 				<p:growl id="msgs" showDetail="true"
 					skipDetailIfEqualsSummary="true" />
 
@@ -17,69 +17,105 @@
 					footer="Select bus and Station from" style="margin-bottom:20px">
 					<h:panelGrid columns="2" cellpadding="10">
 						<!--  <f:event listener="#{beanDestination.init()}" type="preRenderView"/>-->
-						<div  class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel for="@next" value="Select Station From: " />
-							<p:selectOneMenu id="from" value="#{beanDestination.city}"
-								effect="fold" editable="true">
-								<f:selectItem itemLabel="Select One" itemValue="" />
-								<f:selectItems value="#{beanDestination.cities}" />
+						<div class="p-col" style="margin-bottom: 10px;">
+								<p:outputLabel for="st_from" value="Select Station From: " />
+							<p:selectOneMenu id="st_from" value="#{beanDestination.stationFromId}"
+								style="width:150px" rendered="true">
+								<f:selectItems value="#{beanDestination.listStation}" var="thsStation"
+									itemValue="#{thsStation.idStation}" itemLabel="#{thsStation.name}" />
 							</p:selectOneMenu>
 						</div>
-						<div  class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel for="@next" value="Select Station From: " />
-							<p:selectOneMenu id="to" value="#{beanDestination.city}"
-								effect="fold" editable="true">
-								<f:selectItem itemLabel="Select One" itemValue="" />
-								<f:selectItems value="#{beanDestination.cities}" />
+						<div class="p-col" style="margin-bottom: 10px;">
+								<p:outputLabel for="st_to" value="Select Station To: " />
+							<p:selectOneMenu id="st_to" value="#{beanDestination.stationToId}"
+								style="width:150px" rendered="true">
+								<f:selectItems value="#{beanDestination.listStation}" var="thsStation"
+									itemValue="#{thsStation.idStation}" itemLabel="#{thsStation.name}" />
 							</p:selectOneMenu>
 						</div>
-						<div  class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel for="@next" value="Select Bus: " />
-							<p:selectOneMenu id="bus" value="#{beanDestination.bus}"
-								effect="fold" editable="true">
-								<f:selectItem itemLabel="Select One" itemValue="" />
-								<f:selectItems value="#{beanDestination.buss}" />
+						
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel for="bus" value="Select Bus: " />
+							<p:selectOneMenu id="bus" value="#{beanDestination.busId}"
+								style="width:150px" rendered="true">
+								<f:selectItems value="#{beanDestination.listBus}" var="thsBus"
+									itemValue="#{thsBus.idBus}" itemLabel="#{thsBus.name}" />
 							</p:selectOneMenu>
 						</div>
-						<div  class="p-col" style="margin-bottom: 10px;">
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:outputLabel value="Fare: " for="fare" />
+							<p:inputText value="#{beanDestination.newDest.fare}" id="fare"
+								required="true" requiredMessage="Fare Seat est vide" />
+						</div>
+						<div class="p-col" style="margin-bottom: 10px;">
 							<p:outputLabel value="Time : " for="time" />
-							<p:inputText value="" id="time" required="true"
-								requiredMessage="Time est vide" />
-							<p:outputLabel value="fare : " for="fare" />
-							<p:inputText value="" id="fare" required="true"
-								requiredMessage="Fare est vide" />
+							<p:inputText value="#{beanDestination.newDest.time}" id="time"
+								required="true" requiredMessage="Time est vide" />
 						</div>
+						<div class="p-col" style="margin-bottom: 10px;">
+							<p:commandButton value="Enregistrer" icon="pi pi-save"
+								action="#{beanDestination.save()}"
+								update=":formdest1 :formdest2" />
+						</div>
+						
 
 					</h:panelGrid>
 				</p:panel>
 			</h:form>
-			<h:form>
+			<h:form id="formdest2">
 				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
 
-				<p:dataTable value="table">
+				<p:dataTable value="#{beanDestination.listDestination}" var="c"
+					paginator="true" rows="10" id="tableDest" selectionMode="single"
+					selection="#{beanDestination.selectedDest}" rowKey="#{c.idDest}">
 					<f:facet name="header">Liste des Destinations</f:facet>
 					<p:column headerText="St_from">
-						<h:outputText value="..." />
+						#{c.station_from}
 					</p:column>
 
 					<p:column headerText="st_to">
-						<h:outputText value="..." />
+						#{c.station_to}
 					</p:column>
 
 					<p:column headerText="Time">
-						<h:outputText value="..." />
+						#{c.time}
 					</p:column>
 
 					<p:column headerText="Fare">
-						<h:outputText value="..." />
+						#{c.fare}
 					</p:column>
 
 					<p:column headerText="Total_seat">
-						<h:outputText value="..." />
+						#{c.total_seat}
 					</p:column>
 				</p:dataTable>
+				<p:contextMenu for="tableDest">
+				 
+					<p:menuitem value="Supprimer" icon="pi pi-trash"
+						update=":formdest2" action="#{beanDestination.delete()}">
+						<p:confirm header="Confirmation de suppression ?"
+							message="Voulez-vous supprimer cette Destination?"
+							icon="pi pi-exclamation-triangle" />
+					</p:menuitem>
+				</p:contextMenu>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Oui" type="button"
+						styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					<p:commandButton value="Non" type="button"
+						styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+				</p:confirmDialog>
 
 			</h:form>
+				<script type="text/javascript">
+		    function handleLoginRequest(xhr, status, args) {
+		        if(args.validationFailed || !args.loggedIn) {
+		            PF('dlg').jq.effect("shake", {times:5}, 100);
+		        }else {
+		        	PF('dlg').hide();
+			    }
+		    }
+		</script>
 		</ui:define>
 	</ui:composition>
 </body>

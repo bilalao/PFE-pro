@@ -10,8 +10,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		
-		ApplicationContext springContext = new AnnotationConfigApplicationContext(
-				"ma.pfe.projet.metier");
+		ApplicationContext springContext = new AnnotationConfigApplicationContext("ma.pfe.projet.metier","dao");
 
 		IMetier<Bus> metier =springContext.getBean(IMetier.class);
 		System.out.println(metier.findAll());

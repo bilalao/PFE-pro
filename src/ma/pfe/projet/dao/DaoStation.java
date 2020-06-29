@@ -65,8 +65,8 @@ public class DaoStation implements IDAO<Station> {
 
 	@Override
 	public Station findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("(DaoStation)Station id:" + id);
+		return sessionFactory.getCurrentSession().get(Station.class, id);
 	}
 
 }

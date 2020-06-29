@@ -2,6 +2,8 @@ package ma.pfe.projet.metier;
 
 import java.util.List;
 
+
+
 public interface IMetier <T> {
 
 	boolean save(T o);

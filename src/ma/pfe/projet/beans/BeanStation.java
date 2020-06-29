@@ -55,7 +55,7 @@ public class BeanStation {
 		}
 		
 		sta.setName(""); 
-		sta.setaddress("");
+		sta.setAddress("");;
 		sta.setContact("");
 	}
 	

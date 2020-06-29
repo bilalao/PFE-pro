@@ -1,7 +1,6 @@
 package ma.pfe.projet.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import java.util.List;
 
@@ -18,38 +17,43 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
-@Table(name = "reservations")
+@Table(name = "reservation")
 public class Reservation implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idReservation;
+	@Column
+	private int seat_numbers;
+	@Column
+	private int number_of_seat;
+	@Column
+	private int journey_date;
+	@Column
+	private int booking_date;
 
-	
-	private Date Res_date;
-	@Column(name = "")
-	private double solde;
-
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-						 CascadeType.DETACH, CascadeType.REFRESH})
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
 	@JoinColumn(name = "client_numcli")
 	private Client client;
 
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-						 CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "bus_id")
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+	@JoinColumn(name = "bus_idBus")
 	private Bus bus;
 
-	@ManyToMany(fetch = FetchType.LAZY, 
-			cascade = { CascadeType.PERSIST,CascadeType.MERGE,
-						CascadeType.DETACH,CascadeType.REFRESH })
-	@JoinTable(name = "reservations_has_destinations", 
-	joinColumns = @JoinColumn(name = "reservations_id"), 
-	inverseJoinColumns = @JoinColumn(name = "destinations_id"))
-
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+			CascadeType.REFRESH })
+	@JoinTable(name = "reservation_has_destination", 
+	joinColumns = @JoinColumn(name = "reservation_idReservation"),
+	inverseJoinColumns = @JoinColumn(name = "destination_idDest"))
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Destination> destinations;
 
 	public Client getClient() {
@@ -76,20 +80,20 @@ public class Reservation implements Serializable {
 		this.idReservation = idReservation;
 	}
 
-	public Date getRes_date() {
-		return Res_date;
+	public int getJourney_date() {
+		return journey_date;
 	}
 
-	public void setRes_date(Date res_date) {
-		Res_date = res_date;
+	public void setJourney_date(int journey_date) {
+		this.journey_date = journey_date;
 	}
 
-	public double getSolde() {
-		return solde;
+	public int getBooking_date() {
+		return booking_date;
 	}
 
-	public void setSolde(double solde) {
-		this.solde = solde;
+	public void setBooking_date(int booking_date) {
+		this.booking_date = booking_date;
 	}
 
 	public Bus getBus() {
@@ -98,6 +102,41 @@ public class Reservation implements Serializable {
 
 	public void setBus(Bus bus) {
 		this.bus = bus;
+	}
+
+	public int getSeat_numbers() {
+		return seat_numbers;
+	}
+
+	public void setSeat_numbers(int seat_numbers) {
+		this.seat_numbers = seat_numbers;
+	}
+
+	public int getNumber_of_seat() {
+		return number_of_seat;
+	}
+
+	public void setNumber_of_seat(int number_of_seat) {
+		this.number_of_seat = number_of_seat;
+	}
+
+	public Reservation() {
+		super();
+	}
+
+	public Reservation(int seat_numbers, int number_of_seat, int journey_date, int booking_date) {
+		super();
+		this.seat_numbers = seat_numbers;
+		this.number_of_seat = number_of_seat;
+		this.journey_date = journey_date;
+		this.booking_date = booking_date;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservation [idReservation=" + idReservation + ", seat_numbers=" + seat_numbers + ", number_of_seat="
+				+ number_of_seat + ", journey_date=" + journey_date + ", booking_date=" + booking_date + ", client="
+				+ client + ", bus=" + bus + ", destinations=" + destinations + "]";
 	}
 
 }

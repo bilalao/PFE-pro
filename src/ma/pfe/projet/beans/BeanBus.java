@@ -55,10 +55,10 @@ public class BeanBus {
 		newbus.setType("");
 	}
 	
-	public void delete() {
+	public void delete(Integer idBusToDelete) {
 		FacesContext context = FacesContext.getCurrentInstance();
-         
-		if(metierBus.delete(selectedBus)) {
+         Bus busToDelete = metierBus.findById(idBusToDelete);
+		if(metierBus.delete(busToDelete)) {
 			context.addMessage(null, new FacesMessage("Successful",  "Bus supprime avec succes"));
 		}else {
 			context.addMessage(null, new FacesMessage("Error",  "Erreur de suppression de la Bus"));
