@@ -10,19 +10,29 @@
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		<ui:define name="content">
 			<p:dataTable value="#{beanReservation.listReservations}" var="c" paginator="true" rows="10">
-				<f:facet name="header">Liste des reservations</f:facet>
-				<p:column headerText="Numero">
+				<f:facet name="header">Liste des Reservations</f:facet>
+				<p:column headerText="ID Reservation">
 					#{c.idReservation}
 				</p:column>
-				<p:column headerText="Solde">
+				<p:column headerText="Journey_Date">
 					#{c.journey_date}
 				</p:column>
-				<p:column headerText="Client">
-					#{c.client}
+				<p:column headerText="Client_Address">
+					#{c.client.address}
 				</p:column>
-				<p:column headerText="Bus">
-					#{c.bus}
+				<p:column headerText="Bus_Matricule">
+					#{c.bus.matricule}
 				</p:column>
+				<p:column headerText="Booking_Date">
+					#{c.booking_date}
+				</p:column>
+				<p:column headerText="Number_of_seat">
+					#{c.number_of_seat}
+				</p:column>
+					<p:column headerText="Seat_numbers">
+					#{c.seat_numbers}
+				</p:column>
+				
 				
 			</p:dataTable>
 		</ui:define>

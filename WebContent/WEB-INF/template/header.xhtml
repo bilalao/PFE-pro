@@ -1,18 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
-
-<h:head></h:head> 
-<body> 
-
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
 	<ui:composition>
-		<f:facet name="header">
-			<img src="images/logo.png" />
+	<f:facet name="header">
+			<h:form>
+			<!-- <img src="images/myLogo.png" />  -->
+				 <p:commandButton value="Logout"  icon="pi pi-fw pi-power-off" action="#{beanLogin.doLogout()}" ajax="false" style="font-size: 12px"/> 
+					<!-- icon="pi pi-home" -->
+			</h:form>
 		</f:facet>
 	</ui:composition>
-	
-</body> 
+</h:body>
 </html>
+

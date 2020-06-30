@@ -1,92 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Login</title>
-
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="vendor/bootstrap/css/bootstrap.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="vendor/animate/animate.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="vendor/css-hamburgers/hamburgers.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="vendor/animsition/css/animsition.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="vendor/select2/select2.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="vendor/daterangepicker/daterangepicker.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css" />
-	<link rel="stylesheet" type="text/css" href="css/main.css" />
-	<!--===============================================================================================-->
-
-</h:head>
-<h:body>
-	<div class="limiter">
-		<div class="container-login100"
-			style="background-image: url('images/bg-01.jpg');">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>BiAs Admin</title>
+        <link href="css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+   <div class="limiter">
+		<div class="container-login100" style="background-image: url('images/bus.jpg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
-				<span class="login100-form-title p-b-41"> Account Login </span>
-				<form class="login100-form validate-form p-b-33 p-t-5">
-					<div class="wrap-input100 validate-input"
-						data-validate="Enter username">
-						<p:inputText id="username" value="#{beanLogin.username}"
-							required="true" label="username" />
-					</div>
-
-					<div class="wrap-input100 validate-input"
-						data-validate="Enter password">
-						<p:password id="password" value="#{beanLogin.password}"
-							required="true" label="password" />
-					</div>
-					<div class="container-login100-form-btn m-t-32">
-						<p:commandButton value="Login" 
-							action="#{beanLogin.login()}"
-							oncomplete="handleLoginRequest(xhr, status, args)" />
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-
-
-	<div id="dropDownSelect1"></div>
-
-	<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-	<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-	<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-</h:body>
-
+			<div class = "rt">
+        <h:form>
+            <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();"
+			title="login">
+			<i class="pi pi-sign-in" />
+		</h:outputLink>
+            <p:growl autoUpdate="true"/>
+            
+            <div  class="centerDiv" style="width: 400px ; " >
+                <p:panel>
+                    <f:facet name="header">Espace Admin</f:facet>
+            <h:panelGrid columns="2">
+                Nom d'utilisateur:
+                <h:inputText id="txLogin" value="#{beanLogin.username}" required="true" label="Username"
+                             style="#{ component.valid ? '' : 'border-color:red;'}"/>
+                Mot De Passe:
+                <h:inputSecret id="txSenha" value="#{beanLogin.password}" required="true" label="Mot De Passe"
+                               style="#{ component.valid ? '' : 'border-color:red;'}"/>
+                
+            </h:panelGrid>
+                    <p:commandButton value="Se connecter" action="#{beanLogin.login()}" ajax="false" icon="pi pi-user"/>
+                 
+                </p:panel>
+            </div>
+        </h:form>
+        </div>
+        </div>
+        </div>
+        </div>
+       
+    </h:body>
 </html>

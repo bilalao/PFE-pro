@@ -56,8 +56,7 @@ public class Destination implements Serializable {
 	@Column
 	private int total_seat;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
-			CascadeType.REFRESH })
+	@ManyToMany(fetch = FetchType.EAGER, cascade =  CascadeType.ALL)
 	@JoinTable(name = "reservation_has_destination",
 	joinColumns = @JoinColumn(name = "destination_idDest"),
 	inverseJoinColumns = @JoinColumn(name = "reservation_idReservation"))

@@ -4,6 +4,7 @@ import java.io.Serializable;
 //import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,34 +16,29 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "client")
-public class Client implements Serializable{
+public class Client implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	@Column(name="numcli")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "numcli")
 	private int numcli;
 
-	@Column(name="address")
+	@Column(name = "address")
 	private String address;
 
-	@Column(name="email")
+	@Column(name = "email")
 	private String email;
 
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
 
-	
-	@Column(name="phone")
+	@Column(name = "phone")
 	private String phone;
-	
-	//@Column( name = "date_inscription" )
-	//private Timestamp dateInscription;
-	
-	 @OneToMany(mappedBy = "client",fetch = FetchType.LAZY)
-	 private List<Reservation> reservations;
-	
+
+	@OneToMany(mappedBy = "client", fetch = FetchType.EAGER, cascade = CascadeType.ALL,orphanRemoval=true)
+	private List<Reservation> reservations;
 
 	public List<Reservation> getReservations() {
 		return reservations;
@@ -84,7 +80,6 @@ public class Client implements Serializable{
 		this.name = name;
 	}
 
-
 	public String getPhone() {
 		return phone;
 	}
@@ -93,13 +88,13 @@ public class Client implements Serializable{
 		this.phone = phone;
 	}
 
-	public Client(int numcli, String address, String email, String name,  String phone) {
+	public Client(int numcli, String address, String email, String name, String phone) {
 		super();
 		this.numcli = numcli;
 		this.address = address;
 		this.email = email;
 		this.name = name;
-	
+
 		this.phone = phone;
 	}
 
@@ -113,25 +108,4 @@ public class Client implements Serializable{
 				+ phone + ", reservations=" + reservations + "]";
 	}
 
-	
-	/*
-	public Timestamp getDateInscription() {
-		return dateInscription;
-	}
-
-	public void setDateInscription(Timestamp dateInscription) {
-		this.dateInscription = dateInscription;
-	}
-	*/
-
-	
-
-
-	
-
-	
-	/*
-	 * public List<Commande> getCommandes() { return commandes; } public void
-	 * setCommandes(List<Commande> commandes) { this.commandes = commandes; }
-	 */
 }

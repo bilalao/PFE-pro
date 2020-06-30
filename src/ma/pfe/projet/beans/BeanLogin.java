@@ -1,6 +1,9 @@
 package ma.pfe.projet.beans;
+import java.io.IOException;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+
 import javax.faces.context.FacesContext;
 
 import org.primefaces.PrimeFaces;
@@ -30,23 +33,29 @@ public class  BeanLogin {
         this.password = password;
     }
    
-    public void login() {
+    public void login() throws IOException{
+    	
         FacesMessage message = null;
         boolean loggedIn = false;
-         
+   
         if(username != null && username.equals("admin") && password != null && password.equals("admin")) {
             loggedIn = true;
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+        
+            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        
+          
+           
         } else {
             loggedIn = false;
-            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Username ou mot de passe incorrect", "Invalid credentials");
         }
          
         FacesContext.getCurrentInstance().addMessage(null, message);
         PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
     }  
-    public String doLogout() {
+    public void doLogout() throws IOException {
     	FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-    	return "/logout.xhtml";
+    	 FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
     }
 }

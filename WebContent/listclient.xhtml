@@ -9,45 +9,7 @@
 <body> 
 	<ui:composition template="/WEB-INF/template/template.xhtml">
 		<ui:define name="content">
-			<h:form id="formclient1">
-				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
-				<p:panel id="toggleable" header="Ajouter Client" toggleable="true"
-					toggleSpeed="1000" style="margin-bottom:40px; margin-bottom:20px;">
-
-					<div class="p-grid p-dir-col-rev">
-						<div class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel value="Nom de Client : " for="name" />
-							<p:inputText value="#{beanClient.newclient.name}" id="name"
-								required="true" requiredMessage="Nom de Client est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel value="Email : " for="email" />
-							<p:inputText value="#{beanClient.newclient.email}" id="email"
-								required="true" requiredMessage="Email est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel value="Password : " for="password" />
-							<p:inputText value="#{beanClient.newclient.password}" id="password"
-								required="true" requiredMessage="Password Seat est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel value="Phone : " for="phone" />
-							<p:inputText value="#{beanClient.newclient.phone}" id="phone"
-								required="true" requiredMessage="Type est vide" />
-						</div>
-							<div class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel value="Address : " for="address" />
-							<p:inputText value="#{beanClient.newclient.address}" id="address"
-								required="true" requiredMessage="Adress est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
-							<p:commandButton value="Enregistrer" icon="pi pi-save"
-								action="#{beanClient.save()}"
-								update=":formclient1 :formclient2" />
-						</div>
-					</div>
-				</p:panel>
-			</h:form>
+		
 			<h:form id="formclient2">
 				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
 					
@@ -68,16 +30,11 @@
 					<p:column headerText="email">
 					#{c.email}
 				</p:column>
-					<p:column headerText="Password">
-					#{c.password}
-				</p:column>
 					<p:column headerText="Phone">
 					#{c.phone}
 				</p:column>
 				</p:dataTable>
 				<p:contextMenu for="tableclient">
-					<p:menuitem value="Modifier" icon="pi pi-refresh"
-						oncomplete="PF('dlg').show();" update=":formclient3:panelclient" />
 					<p:menuitem value="Supprimer" icon="pi pi-trash"
 						update=":formclient2" action="#{beanClient.delete()}">
 						<p:confirm header="Confirmation de suppression"
@@ -92,32 +49,6 @@
 					<p:commandButton value="Non" type="button"
 						styleClass="ui-confirmdialog-no" icon="pi pi-times" />
 				</p:confirmDialog>
-			</h:form>
-			<h:form id="formclient3">
-
-				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
-
-				<p:dialog header="Modification Client" widgetVar="dlg"
-					resizable="false">
-					<h:panelGrid id="panelclient" columns="2" cellpadding="5">
-						<h:outputLabel for="namec" value="Nom de Client : " />
-						<p:inputText id="namec" value="#{beanClient.selectedClient.name}"
-							required="true" label="Nom de Client" />
-
-						<h:outputLabel for="email" value="Email : " />
-						<p:inputText id="eamil"
-							value="#{beanClient.selectedClient.email}" required="true"
-							label="Email" />
-
-						<f:facet name="footer">
-							<p:commandButton value="Mettre a jour"
-								update="growl :formclient2:tableclient"
-								action="#{beanClient.update()}"
-								oncomplete="handleLoginRequest(xhr, status, args);" />
-							<p:commandButton value="Annuler" onclick="PF('dlg').hide();" />
-						</f:facet>
-					</h:panelGrid>
-				</p:dialog>
 			</h:form>
 			<script type="text/javascript">
 		    function handleLoginRequest(xhr, status, args) {

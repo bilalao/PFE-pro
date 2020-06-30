@@ -39,7 +39,7 @@ public class Reservation implements Serializable {
 	@Column
 	private int booking_date;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH ,CascadeType.REMOVE})
 	@JoinColumn(name = "client_numcli")
 	private Client client;
 
