@@ -25,12 +25,13 @@
 	<div class="top-nav w3-agiletop">
 				<div class="container">
 					<div class="navbar-header w3llogo" >
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<!-- 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>  
+						 -->
 						<h1><a href="welcome.html">BiAs</a></h1> 
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,7 +50,7 @@
 									<div class="form-group">
 										<span class="form-label">Station depart</span>
 										<p:selectOneMenu  value="#{beanReservation.destFrom}"
-						style="width:150px" rendered="true">
+						 rendered="true">
 						<p:ajax listener="#{beanReservation.fromWasSelected}"
 							update=":formRes" />
 						<f:selectItem itemLabel="----Select FROM City----" itemValue="" />
@@ -64,7 +65,7 @@
 									<div class="form-group">
 										<span class="form-label">Station arrivee</span>
 										<p:selectOneMenu  value="#{beanReservation.destTo}"
-						style="width:150px" rendered="true">
+					 rendered="true">
 						<p:ajax listener="#{beanReservation.toWasSelected}"
 							update=":formRes" />
 						<f:selectItem itemLabel="----Select Your Destination----"
@@ -79,7 +80,7 @@
 								<span class="form-label">Heure</span>
 								<p:selectOneMenu 
 						value="#{beanReservation.selectedJourney_date}"
-						style="width:150px" rendered="true">
+						 rendered="true">
 						<f:selectItem itemLabel="----Select Available Date----"
 							itemValue="" />
 						<f:selectItems value="#{beanReservation.listJourney_date}"
@@ -118,7 +119,8 @@
 							</div>
 							<div class="form-btn">
 								<p:commandButton value="Enregistrer" icon="pi pi-save"
-			action="#{beanReservation.save()}" update=":formRes" id="button" />
+			action="#{beanReservation.save()}" update=":formRes" id="button" style=" position : relative;
+				 left : 75%;" />
 							</div>
 						</h:form>
 					</div>

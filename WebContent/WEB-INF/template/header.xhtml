@@ -10,10 +10,14 @@
 	<ui:composition>
 	<f:facet name="header">
 			<h:form>
-			<!-- <img src="images/myLogo.png" />  -->
-				 <p:commandButton value="Se déconnecter"  icon="pi pi-fw pi-power-off" action="#{beanLogin.doLogout()}" ajax="false" style="font-size: 12px ;position : relative;
-				 left : 86%;"/> 
-					<!-- icon="pi pi-home" -->
+				 <p:growl id="messages"/>
+ 
+  
+       
+            <p:commandButton  value="Logout" icon="pi pi-home" action="#{beanLogin.doLogout()}" ajax="false" style="font-size: 12px ;position : relative;
+				 left : 86%;" />
+  
+    
 			</h:form>
 		</f:facet>
 	</ui:composition>
