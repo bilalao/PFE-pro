@@ -21,16 +21,16 @@
 					<p:column headerText="Numero">
 					#{c.numcli}
 				</p:column>
-					<p:column headerText="Name">
+					<p:column headerText="Nom Complet">
 					#{c.name}
 				</p:column>
-					<p:column headerText="Address">
+					<p:column headerText="Adresse">
 					#{c.address}
 				</p:column>
-					<p:column headerText="email">
+					<p:column headerText="Email">
 					#{c.email}
 				</p:column>
-					<p:column headerText="Phone">
+					<p:column headerText="Telephone">
 					#{c.phone}
 				</p:column>
 				</p:dataTable>
@@ -38,7 +38,7 @@
 					<p:menuitem value="Supprimer" icon="pi pi-trash"
 						update=":formclient2" action="#{beanClient.delete()}">
 						<p:confirm header="Confirmation de suppression"
-							message="Voulez-vous supprimer cette Client?"
+							message="Voulez-vous supprimer ce Client?"
 							icon="pi pi-exclamation-triangle" />
 					</p:menuitem>
 				</p:contextMenu>

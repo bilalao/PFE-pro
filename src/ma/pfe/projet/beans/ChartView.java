@@ -1,4 +1,4 @@
-package ma.pfe.projet.beans;
+/*package ma.pfe.projet.beans;
 
 import java.io.Serializable;
 
@@ -113,4 +113,4 @@ public class ChartView implements Serializable{
 	
 	
 	
-}
+}*/

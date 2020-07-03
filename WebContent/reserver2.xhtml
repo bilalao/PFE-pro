@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+	<link href="css/style2.css" rel="stylesheet" type="text/css" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all"/>
+	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all"/>
+<link href="css/style.css" type="text/css" rel="stylesheet" media="all"/> 
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />  <!-- flexslider-CSS --> 
+<link href="css/font-awesome.css" rel="stylesheet"/>		<!-- font-awesome icons -->  
+<!-- //Custom Theme files -->  
+<!-- web-fonts -->   
+<link href="//fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700" rel="stylesheet"/>
+<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet"/>
+	 
+	<script src="jquery-2.1.4.js"></script>
+	<script src="jspdf.min.js"></script>
+    </h:head>
+	
+	<h:body style="background-image: url('images/bg.jpg');">
+	<div class="top-nav w3-agiletop">
+				<div class="container">
+					<div class="navbar-header w3llogo" >
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>  
+						<h1><a href="welcome.html">BiAs</a></h1> 
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					
+				</div>	
+			</div>	
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form" >
+						
+						<h:form id="formRes">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<span class="form-label">Station depart</span>
+										<p:selectOneMenu  value="#{beanReservation.destFrom}"
+						style="width:150px" rendered="true">
+						<p:ajax listener="#{beanReservation.fromWasSelected}"
+							update=":formRes" />
+						<f:selectItem itemLabel="----Select FROM City----" itemValue="" />
+						<f:selectItems value="#{beanReservation.listFrom}" var="destFrom"
+							itemValue="#{destFrom}" itemLabel="#{destFrom}"
+							requiredMessage="Please Select Source" />
+
+					</p:selectOneMenu>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<span class="form-label">Station arrivee</span>
+										<p:selectOneMenu  value="#{beanReservation.destTo}"
+						style="width:150px" rendered="true">
+						<p:ajax listener="#{beanReservation.toWasSelected}"
+							update=":formRes" />
+						<f:selectItem itemLabel="----Select Your Destination----"
+							itemValue="" />
+						<f:selectItems value="#{beanReservation.listTo}" var="destTo"
+							itemValue="#{destTo}" itemLabel="#{destTo}" />
+					</p:selectOneMenu>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<span class="form-label">Heure</span>
+								<p:selectOneMenu 
+						value="#{beanReservation.selectedJourney_date}"
+						style="width:150px" rendered="true">
+						<f:selectItem itemLabel="----Select Available Date----"
+							itemValue="" />
+						<f:selectItems value="#{beanReservation.listJourney_date}"
+							var="journey" itemValue="#{journey}" itemLabel="#{journey}" />
+					</p:selectOneMenu>
+							</div>
+							<div class="form-group">
+								<span class="form-label">Nom Complet</span>
+								<p:inputText value="#{beanReservation.newclient.name}" id="name"
+						required="true" requiredMessage="Nom est vide" />
+							</div>
+							<div class="form-group">
+								<span class="form-label">Adresse electronique</span>
+								<p:inputText value="#{beanReservation.newclient.email}" id="email"
+						required="true" requiredMessage="Email est vide" />
+							</div>
+							<div class="row">
+								<div class="col-sm-5">
+									<div class="form-group">
+										<span class="form-label">Telephone</span>
+										<p:inputText value="#{beanReservation.newclient.phone}" id="phone"
+						required="true" requiredMessage="Phone est vide" />
+									</div>
+								</div>
+								
+							</div>
+							<div class="row">
+								<div class="col-sm-5">
+									<div class="form-group">
+										<span class="form-label">Adresse</span>
+										<p:inputText value="#{beanReservation.newclient.address}"
+						id="address" required="true" requiredMessage="Adress est vide" />
+									</div>
+								</div>
+								
+							</div>
+							<div class="form-btn">
+								<p:commandButton value="Enregistrer" icon="pi pi-save"
+			action="#{beanReservation.save()}" update=":formRes" id="button" />
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer w3-w3layouts">
+		<div class="container"> 
+			<div class="footer-agileinfo">
+				<div class="col-md-4 col-sm-4 footer-wthreegrid">
+					<h3>BiAs</h3> 
+					<div class=" footerabt-w3text"> 
+						<p> Vous cherchez un autocar qui vous amène de A à B ? Vous souhaitez le WiFi dans le bus, avoir beaucoup d'espace pour vos jambes ou emporter votre vélo ? Alors vous êtes au bon endroit sur BiAs ! </p>
+						<div class="social-w3licon">
+							<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+							<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a> 
+							<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a> 
+							<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a> 
+						</div>  
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				
+				
+				<div class="clearfix"> </div>
+			</div>  
+		</div>
+	</div>
+	<div class="copy-right"> 
+		<div class="container">
+			<p>© BiAs. All rights reserved </p>
+		</div> 
+	</div> 
+	
+	</h:body>
+	</html>

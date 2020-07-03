@@ -14,11 +14,11 @@
 					skipDetailIfEqualsSummary="true" />
 
 				<p:panel id="Information" header="Information"
-					footer="Select bus and Station from" style="margin-bottom:20px">
+					 style="margin-bottom:20px">
 					<h:panelGrid columns="2" cellpadding="10">
 						<!--  <f:event listener="#{beanDestination.init()}" type="preRenderView"/>-->
 						<div class="p-col" style="margin-bottom: 10px;">
-								<p:outputLabel for="st_from" value="Select Station From: " />
+								<p:outputLabel for="st_from" value="Station de départ : " style="position:relative; right : 99%;"/>
 							<p:selectOneMenu id="st_from" value="#{beanDestination.stationFromId}"
 								style="width:150px" rendered="true">
 								<f:selectItems value="#{beanDestination.listStation}" var="thsStation"
@@ -26,7 +26,8 @@
 							</p:selectOneMenu>
 						</div>
 						<div class="p-col" style="margin-bottom: 10px;">
-								<p:outputLabel for="st_to" value="Select Station To: " />
+								<p:outputLabel for="st_to" value=" Station d'arrivée:  "  />
+								<br/>
 							<p:selectOneMenu id="st_to" value="#{beanDestination.stationToId}"
 								style="width:150px" rendered="true">
 								<f:selectItems value="#{beanDestination.listStation}" var="thsStation"
@@ -35,7 +36,8 @@
 						</div>
 						
 						<div class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel for="bus" value="Select Bus: " />
+							<p:outputLabel for="bus" value="Bus: "  />
+						
 							<p:selectOneMenu id="bus" value="#{beanDestination.busId}"
 								style="width:150px" rendered="true">
 								<f:selectItems value="#{beanDestination.listBus}" var="thsBus"
@@ -43,12 +45,12 @@
 							</p:selectOneMenu>
 						</div>
 						<div class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel value="Fare: " for="fare" />
+							<p:outputLabel value="Prix: " for="fare" style="position:relative; right : 99%;"/>
 							<p:inputText value="#{beanDestination.newDest.fare}" id="fare"
 								required="true" requiredMessage="Fare Seat est vide" />
 						</div>
 						<div class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel value="Time : " for="time" />
+							<p:outputLabel value="Heure : " for="time" />
 							<p:inputText value="#{beanDestination.newDest.time}" id="time"
 								required="true" requiredMessage="Time est vide" />
 						</div>
@@ -69,23 +71,23 @@
 					paginator="true" rows="10" id="tableDest" selectionMode="single"
 					selection="#{beanDestination.selectedDest}" rowKey="#{c.idDest}">
 					<f:facet name="header">Liste des Destinations</f:facet>
-					<p:column headerText="St_from">
+					<p:column headerText="Départ">
 						#{c.station_from}
 					</p:column>
 
-					<p:column headerText="st_to">
+					<p:column headerText="Arrivée">
 						#{c.station_to}
 					</p:column>
 
-					<p:column headerText="Time">
+					<p:column headerText="Heure">
 						#{c.time}
 					</p:column>
 
-					<p:column headerText="Fare">
+					<p:column headerText="Prix">
 						#{c.fare}
 					</p:column>
 
-					<p:column headerText="Total_seat">
+					<p:column headerText="Total de places">
 						#{c.total_seat}
 					</p:column>
 				</p:dataTable>
