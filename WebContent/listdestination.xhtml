@@ -13,52 +13,47 @@
 				<p:growl id="msgs" showDetail="true"
 					skipDetailIfEqualsSummary="true" />
 
-				<p:panel id="Information" header="Information"
-					 style="margin-bottom:20px">
-					<p:panelGrid columns="4" layout="grid" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" styleClass="customPanelGrid" contentStyleClass="ui-fluid">
-						<div class="p-col" style="margin-bottom: 10px;">
-								<p:outputLabel for="st_from" value="Station de départ : "/>
-							<p:selectOneMenu id="st_from" value="#{beanDestination.stationFromId}"
-								 rendered="true">
-								<f:selectItems value="#{beanDestination.listStation}" var="thsStation"
-									itemValue="#{thsStation.idStation}" itemLabel="#{thsStation.name}" />
-							</p:selectOneMenu>
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
-								<p:outputLabel for="st_to" value=" Station d'arrivée:  "  />
+				<p:panel id="Information" header="Ajoute Destination" toggleable="true"
+					toggleSpeed="1000">
+					<p:panelGrid columns="2" layout="grid"
+						columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"
+						styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+
+						<p:outputLabel for="st_from" value="Station de départ : " />
+						<p:selectOneMenu id="st_from"
+							value="#{beanDestination.stationFromId}" rendered="true">
+							<f:selectItems value="#{beanDestination.listStation}"
+								var="thsStation" itemValue="#{thsStation.idStation}"
+								itemLabel="#{thsStation.name}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="st_to" value=" Station d'arrivée:  " />
+						<p:selectOneMenu id="st_to" value="#{beanDestination.stationToId}"
+							rendered="true">
+							<f:selectItems value="#{beanDestination.listStation}"
+								var="thsStation" itemValue="#{thsStation.idStation}"
+								itemLabel="#{thsStation.name}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="bus" value="Bus: " />
+						<p:selectOneMenu id="bus" value="#{beanDestination.busId}"
+							rendered="true">
+							<f:selectItems value="#{beanDestination.listBus}" var="thsBus"
+								itemValue="#{thsBus.idBus}" itemLabel="#{thsBus.name}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Prix: " for="fare" />
+						<p:inputText value="#{beanDestination.newDest.fare}" id="fare"
+							required="true" requiredMessage="Fare Seat est vide" />
+
+						<p:outputLabel value="Heure : " for="time" />
+						<p:inputText value="#{beanDestination.newDest.time}" id="time"
+							required="true" requiredMessage="Time est vide" />
 								<br/>
-							<p:selectOneMenu id="st_to" value="#{beanDestination.stationToId}"
-								 rendered="true">
-								<f:selectItems value="#{beanDestination.listStation}" var="thsStation"
-									itemValue="#{thsStation.idStation}" itemLabel="#{thsStation.name}" />
-							</p:selectOneMenu>
-						</div>
-						
-						<div class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel for="bus" value="Bus: "  />
-						
-							<p:selectOneMenu id="bus" value="#{beanDestination.busId}"
-								 rendered="true">
-								<f:selectItems value="#{beanDestination.listBus}" var="thsBus"
-									itemValue="#{thsBus.idBus}" itemLabel="#{thsBus.name}" />
-							</p:selectOneMenu>
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel value="Prix: " for="fare"/>
-							<p:inputText value="#{beanDestination.newDest.fare}" id="fare"
-								required="true" requiredMessage="Fare Seat est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
-							<p:outputLabel value="Heure : " for="time" />
-							<p:inputText value="#{beanDestination.newDest.time}" id="time"
-								required="true" requiredMessage="Time est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
-							<p:commandButton value="Enregistrer" icon="pi pi-save"
-								action="#{beanDestination.save()}"
-								update=":formdest1 :formdest2" />
-						</div>
-						
+						<p:commandButton value="Enregistrer" icon="pi pi-save"
+							action="#{beanDestination.save()}" update=":formdest1 :formdest2" />
+
+
 
 					</p:panelGrid>
 				</p:panel>
@@ -91,7 +86,7 @@
 					</p:column>
 				</p:dataTable>
 				<p:contextMenu for="tableDest">
-				 
+
 					<p:menuitem value="Supprimer" icon="pi pi-trash"
 						update=":formdest2" action="#{beanDestination.delete()}">
 						<p:confirm header="Confirmation de suppression ?"
@@ -108,7 +103,7 @@
 				</p:confirmDialog>
 
 			</h:form>
-				<script type="text/javascript">
+			<script type="text/javascript">
 		    function handleLoginRequest(xhr, status, args) {
 		        if(args.validationFailed || !args.loggedIn) {
 		            PF('dlg').jq.effect("shake", {times:5}, 100);

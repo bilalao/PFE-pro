@@ -13,30 +13,27 @@
 				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
 
 				<p:panel id="toggleable" header="Ajouter Station" toggleable="true"
-					toggleSpeed="1000" style="margin-bottom:40px; margin-bottom:20px;">
-
-					<div class="p-grid p-dir-col-rev">
-						<div class="p-col" style="margin-bottom: 10px;">
+					toggleSpeed="1000" >
+						<p:panelGrid columns="2" layout="grid"
+						columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"
+						styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+					
 							<p:outputLabel value="Nom de Station : " for="nomsta" />
 							<p:inputText value="#{beanStation.sta.name}" id="nomsta"
 								required="true" requiredMessage="Nom de Station est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
+			
 							<p:outputLabel value="Adresse : " for="adresse" />
 							<p:inputText value="#{beanStation.sta.address}" id="adresse"
 								required="true" requiredMessage="Adresse est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
+					
 							<p:outputLabel value="Contact : " for="contact" />
 							<p:inputText value="#{beanStation.sta.contact}" id="contact"
 								required="true" requiredMessage="Contact est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
+							<br/>
 							<p:commandButton value="Enregistrer" icon="pi pi-save"
 								action="#{beanStation.save()}"
 								update=":formStation1 :formStation2" />
-						</div>
-					</div>
+					</p:panelGrid>
 				</p:panel>
 			</h:form>
 			<h:form id="formStation2">

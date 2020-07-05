@@ -12,35 +12,32 @@
 			<h:form id="formbus1">
 				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
 				<p:panel id="toggleable" header="Ajouter Bus" toggleable="true"
-					toggleSpeed="1000" style="margin-bottom:40px; margin-bottom:20px;">
+					toggleSpeed="1000" >
+					<p:panelGrid columns="2" layout="grid"
+						columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"
+						styleClass="customPanelGrid" contentStyleClass="ui-fluid">
 
-					<div class="p-grid p-dir-col-rev">
-						<div class="p-col" style="margin-bottom: 10px;">
+					
 							<p:outputLabel value="Nom de Bus : " for="nombus" />
 							<p:inputText value="#{beanBus.newbus.name}" id="nombus"
 								required="true" requiredMessage="Nom de Bus est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
+					
 							<p:outputLabel value="Matricule : " for="matricule" />
 							<p:inputText value="#{beanBus.newbus.matricule}" id="matricule"
 								required="true" requiredMessage="Matricule est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
+				
 							<p:outputLabel value="Total Seat : " for="total_seat" />
 							<p:inputText value="#{beanBus.newbus.total_seat}" id="total_seat"
 								required="true" requiredMessage="Total Seat est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
+				
 							<p:outputLabel value="Bus Type : " for="type" />
 							<p:inputText value="#{beanBus.newbus.type}" id="type"
 								required="true" requiredMessage="Type est vide" />
-						</div>
-						<div class="p-col" style="margin-bottom: 10px;">
+							<br/>
 							<p:commandButton value="Enregistrer" icon="pi pi-save"
 								action="#{beanBus.save()}"
 								update=":formbus1 :formbus2" />
-						</div>
-					</div>
+					</p:panelGrid>
 				</p:panel>
 			</h:form>
 			<h:form id="formbus2">

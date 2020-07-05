@@ -19,6 +19,7 @@
 	 
 	<script src="jquery-2.1.4.js"></script>
 	<script src="jspdf.min.js"></script>
+	<title>Check Your Ticket</title>
     </h:head>
 	
 	<h:body style="background-image: url('images/bg.jpg');">
@@ -81,7 +82,7 @@
 								<p:selectOneMenu 
 						value="#{beanReservation.selectedJourney_date}"
 						 rendered="true">
-						<f:selectItem itemLabel="----Select Available Date----"
+						<f:selectItem itemLabel="----Select Available Time----"
 							itemValue="" />
 						<f:selectItems value="#{beanReservation.listJourney_date}"
 							var="journey" itemValue="#{journey}" itemLabel="#{journey}" />
@@ -118,7 +119,7 @@
 								
 							</div>
 							<div class="form-btn">
-								<p:commandButton value="Enregistrer" icon="pi pi-save"
+								<p:commandButton value="Reservé" icon="pi pi-check"
 			action="#{beanReservation.save()}" update=":formRes" id="button" style=" position : relative;
 				 left : 75%;" />
 							</div>
