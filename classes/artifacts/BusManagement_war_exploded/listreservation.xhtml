@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+		<ui:define name="content">
+			<p:dataTable value="#{beanReservation.listReservations}" var="c" paginator="true" rows="10">
+				<f:facet name="header">Liste des Reservations</f:facet>
+				<p:column headerText="ID Reservation">
+					#{c.idReservation}
+				</p:column>
+				<p:column headerText="Heure">
+					#{c.journey_date}
+				</p:column>
+				<p:column headerText="Adresse de client">
+					#{c.client.address}
+				</p:column>
+				<p:column headerText="Matricule de bus">
+					#{c.bus.matricule}
+				</p:column>
+				<p:column headerText="Heure de Reservation">
+					#{c.booking_date}
+				</p:column>
+				<p:column headerText="Numero de place ">
+					#{c.number_of_seat}
+				</p:column>
+					<p:column headerText="total de place">
+					#{c.seat_numbers}
+				</p:column>
+				
+				
+			</p:dataTable>
+		</ui:define>
+	</ui:composition>
+</body> 
+</html>

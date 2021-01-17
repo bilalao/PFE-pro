@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition>
+		<h:form>
+			<p:panelMenu>
+				<p:submenu label="Dashboard" action="listclient">
+					<p:menuitem value="Statistiques" icon="pi pi-chart-bar"
+						action="dashboard" />
+				</p:submenu>
+				<p:submenu label="Client">
+					<p:menuitem value="Liste des clients" action="listclient" icon="pi pi-list" />
+					
+				</p:submenu>
+
+				<p:submenu label="Bus">
+					<p:menuitem value="Gestion des Bus" action="listbus" icon="pi pi-list"/>
+
+				</p:submenu>
+
+				<p:submenu label="Station">
+					<p:menuitem value="Gestion des Station" action="liststation" icon="pi pi-list"/>
+
+				</p:submenu>
+				<p:submenu label="Destination">
+					<p:menuitem value="Gestion des destination"
+						action="listdestination" icon="pi pi-list"/>
+				</p:submenu>
+				<p:submenu label="Reservation">
+					<p:menuitem value="Gestion des Reservation"
+						action="listreservation" icon="pi pi-list"/>
+					<p:menuitem value="Statistiques" icon="pi pi-chart-bar" />
+				</p:submenu>
+			</p:panelMenu>
+		</h:form>
+	</ui:composition>
+</body>
+</html>

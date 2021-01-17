@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+		<ui:define name="content">
+			<h:form id="formdest1">
+				<p:growl id="msgs" showDetail="true"
+					skipDetailIfEqualsSummary="true" />
+
+				<p:panel id="Information" header="Ajoute Destination" toggleable="true"
+					toggleSpeed="1000">
+					<p:panelGrid columns="2" layout="grid"
+						columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"
+						styleClass="customPanelGrid" contentStyleClass="ui-fluid">
+
+						<p:outputLabel for="st_from" value="Station de départ : " />
+						<p:selectOneMenu id="st_from"
+							value="#{beanDestination.stationFromId}" rendered="true">
+							<f:selectItems value="#{beanDestination.listStation}"
+								var="thsStation" itemValue="#{thsStation.idStation}"
+								itemLabel="#{thsStation.name}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="st_to" value=" Station d'arrivée:  " />
+						<p:selectOneMenu id="st_to" value="#{beanDestination.stationToId}"
+							rendered="true">
+							<f:selectItems value="#{beanDestination.listStation}"
+								var="thsStation" itemValue="#{thsStation.idStation}"
+								itemLabel="#{thsStation.name}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="bus" value="Bus: " />
+						<p:selectOneMenu id="bus" value="#{beanDestination.busId}"
+							rendered="true">
+							<f:selectItems value="#{beanDestination.listBus}" var="thsBus"
+								itemValue="#{thsBus.idBus}" itemLabel="#{thsBus.name}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Prix: " for="fare" />
+						<p:inputText value="#{beanDestination.newDest.fare}" id="fare"
+							required="true" requiredMessage="Fare Seat est vide" />
+
+						<p:outputLabel value="Heure : " for="time" />
+						<p:inputText value="#{beanDestination.newDest.time}" id="time"
+							required="true" requiredMessage="Time est vide" />
+								<br/>
+						<p:commandButton value="Enregistrer" icon="pi pi-save"
+							action="#{beanDestination.save()}" update=":formdest1 :formdest2" />
+
+
+
+					</p:panelGrid>
+				</p:panel>
+			</h:form>
+			<h:form id="formdest2">
+				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
+
+				<p:dataTable value="#{beanDestination.listDestination}" var="c"
+					paginator="true" rows="10" id="tableDest" selectionMode="single"
+					selection="#{beanDestination.selectedDest}" rowKey="#{c.idDest}">
+					<f:facet name="header">Liste des Destinations</f:facet>
+					<p:column headerText="Départ">
+						#{c.station_from}
+					</p:column>
+
+					<p:column headerText="Arrivée">
+						#{c.station_to}
+					</p:column>
+
+					<p:column headerText="Heure">
+						#{c.time}
+					</p:column>
+
+					<p:column headerText="Prix">
+						#{c.fare}
+					</p:column>
+
+					<p:column headerText="Total de places">
+						#{c.total_seat}
+					</p:column>
+				</p:dataTable>
+				<p:contextMenu for="tableDest">
+
+					<p:menuitem value="Supprimer" icon="pi pi-trash"
+						update=":formdest2" action="#{beanDestination.delete()}">
+						<p:confirm header="Confirmation de suppression ?"
+							message="Voulez-vous supprimer cette Destination?"
+							icon="pi pi-exclamation-triangle" />
+					</p:menuitem>
+				</p:contextMenu>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Oui" type="button"
+						styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					<p:commandButton value="Non" type="button"
+						styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+				</p:confirmDialog>
+
+			</h:form>
+			<script type="text/javascript">
+		    function handleLoginRequest(xhr, status, args) {
+		        if(args.validationFailed || !args.loggedIn) {
+		            PF('dlg').jq.effect("shake", {times:5}, 100);
+		        }else {
+		        	PF('dlg').hide();
+			    }
+		    }
+		</script>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

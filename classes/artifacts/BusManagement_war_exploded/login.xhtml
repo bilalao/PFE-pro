@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>BiAs Admin</title>
+        <link href="css/default.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+   <div class="limiter">
+		<div class="container-login100" style="background-image: url('images/bus.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+			<div class = "rt">
+        <h:form>
+            <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();"
+			title="login">
+			<i class="pi pi-sign-in" />
+		</h:outputLink>
+            <p:growl autoUpdate="true"/>
+            
+            <div  class="centerDiv" style="width: 400px ; " >
+                <p:panel>
+                    <f:facet name="header">Espace Admin</f:facet>
+            <h:panelGrid columns="2">
+                Nom d'utilisateur:
+                <h:inputText id="txLogin" value="#{beanLogin.username}" required="true" label="Username"
+                             style="#{ component.valid ? '' : 'border-color:red;'}"/>
+                Mot De Passe:
+                <h:inputSecret id="txSenha" value="#{beanLogin.password}" required="true" label="Mot De Passe"
+                               style="#{ component.valid ? '' : 'border-color:red;'}"/>
+                
+            </h:panelGrid>
+                    <p:commandButton value="Se connecter" action="#{beanLogin.login()}" ajax="false" icon="pi pi-user"/>
+                 
+                </p:panel>
+            </div>
+        </h:form>
+        </div>
+        </div>
+        </div>
+        </div>
+       
+    </h:body>
+</html>

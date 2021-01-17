@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<script src="jquery-2.1.4.js"></script>
+	<script src="jspdf.min.js"></script>
+</h:head>
+<h:body>
+	<h:form id="formRes">
+		<p:growl id="growl0" showDetail="true" sticky="true" life="3000" />
+		<p:panel id="toggleable0" header="Reserve Now!" toggleable="true"
+			toggleSpeed="1000" style="margin-bottom:40px; margin-bottom:20px;">
+
+			<div class="p-grid p-dir-col-rev">
+				<div class="p-col" style="margin-bottom: 10px;">
+					<p:outputLabel value="Station from  : " for="st_from" />
+					<p:selectOneMenu id="st_from" value="#{beanReservation.destFrom}"
+						style="width:150px" rendered="true">
+						<p:ajax listener="#{beanReservation.fromWasSelected}"
+							update=":formRes" />
+						<f:selectItem itemLabel="----Select FROM City----" itemValue="" />
+						<f:selectItems value="#{beanReservation.listFrom}" var="destFrom"
+							itemValue="#{destFrom}" itemLabel="#{destFrom}"
+							requiredMessage="Please Select Source" />
+
+					</p:selectOneMenu>
+				</div>
+
+				<div class="p-col" style="margin-bottom: 10px;">
+					<p:outputLabel value="Station to  : " for="st_to" />
+					<p:selectOneMenu id="st_to" value="#{beanReservation.destTo}"
+						style="width:150px" rendered="true">
+						<p:ajax listener="#{beanReservation.toWasSelected}"
+							update=":formRes" />
+						<f:selectItem itemLabel="----Select Your Destination----"
+							itemValue="" />
+						<f:selectItems value="#{beanReservation.listTo}" var="destTo"
+							itemValue="#{destTo}" itemLabel="#{destTo}" />
+					</p:selectOneMenu>
+				</div>
+
+				<div class="p-col" style="margin-bottom: 10px;">
+					<p:outputLabel value="Date and Time of Trip : " for="journey" />
+					<p:selectOneMenu id="journey"
+						value="#{beanReservation.selectedJourney_date}"
+						style="width:150px" rendered="true">
+						<f:selectItem itemLabel="----Select Available Date----"
+							itemValue="" />
+						<f:selectItems value="#{beanReservation.listJourney_date}"
+							var="journey" itemValue="#{journey}" itemLabel="#{journey}" />
+					</p:selectOneMenu>
+				</div>
+
+			</div>
+		</p:panel>
+
+		<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
+		<p:panel id="toggleable" header="Ajouter Votre Informations"
+			toggleable="true" toggleSpeed="1000"
+			style="margin-bottom:40px; margin-bottom:20px;">
+
+			<div class="p-grid p-dir-col-rev">
+				<div class="p-col" style="margin-bottom: 10px;">
+					<p:outputLabel value="Nom de Client : " for="name" />
+					<p:inputText value="#{beanReservation.newclient.name}" id="name"
+						required="true" requiredMessage="Nom est vide" />
+				</div>
+				<div class="p-col" style="margin-bottom: 10px;">
+					<p:outputLabel value="Email : " for="email" />
+					<p:inputText value="#{beanReservation.newclient.email}" id="email"
+						required="true" requiredMessage="Email est vide" />
+				</div>
+				<div class="p-col" style="margin-bottom: 10px;">
+					<p:outputLabel value="Phone : " for="phone" />
+					<p:inputText value="#{beanReservation.newclient.phone}" id="phone"
+						required="true" requiredMessage="Phone est vide" />
+				</div>
+				<div class="p-col" style="margin-bottom: 10px;">
+					<p:outputLabel value="Address : " for="address" />
+					<p:inputText value="#{beanReservation.newclient.address}"
+						id="address" required="true" requiredMessage="Adress est vide" />
+				</div>
+				<div class="p-col" style="margin-bottom: 10px;"></div>
+			</div>
+		</p:panel>
+		<p:commandButton value="Enregistrer" icon="pi pi-save" type="button"
+			action="#{beanReservation.save()}" update=":formRes" id="button" />
+	</h:form>
+
+	<script>
+
+	$('#button').click(function() {
+		
+		 var doc = new jsPDF();		 		 
+
+////////////////////////// passenger details
+		doc.setFont('helvetica')
+		doc.setFontType('bold')
+		doc.text(20, 20, 'Name :')
+		doc.setFont('times')
+		doc.setFontType('italic')
+		doc.text(40, 20, 'bilal')
+		
+		doc.setFont('helvetica')
+		doc.setFontType('bold')
+		doc.text(20, 30, 'Email :')
+		doc.setFont('times')
+		doc.setFontType('italic')
+		doc.text(40, 30, 'Aoutah@mail.ma')
+		
+		
+		doc.setFont('helvetica')
+		doc.setFontType('bold')
+		doc.text(20, 40, 'Phone :')
+		doc.setFont('times')
+		doc.setFontType('italic')
+		doc.text(45, 40, '065434589')
+		
+		doc.setFont('helvetica')
+		doc.setFontType('bold')
+		doc.text(20, 50, 'Address :')
+		doc.setFont('times')
+		doc.setFontType('italic')
+		doc.text(50, 50, 'AV rihan 987 tetouan')
+
+		 doc.save('ticket-file.pdf');
+
+		 
+	});
+</script>
+
+
+</h:body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Login</title>
+</h:head>  
+<body>
+
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+	
+		<ui:define name="content">
+		<h:form>
+			<div class="container-login100"
+				style="background-image: url('images/bus.jpg');">
+				<h1>Hello Admin</h1>
+				<p:breadCrumb>
+					<p:menuitem value="Clients" action="listclient"/>
+					<p:menuitem value="Bus" url="#" />
+					<p:menuitem value="Station" url="#" />
+					<p:menuitem value="Destination" url="#" />
+					<p:menuitem value="Reservation" url="#" />
+					<p:menuitem value="All Bookings" url="#" />
+					
+				</p:breadCrumb>
+			</div>
+			</h:form>
+		</ui:define>
+		
+	</ui:composition>
+
+</body>
+</html>

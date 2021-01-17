@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+	<ui:composition template="/WEB-INF/template/template.xhtml">
+		<ui:define name="content">
+		
+			<h:form id="formclient2">
+				<p:growl id="growl" showDetail="true" sticky="true" life="3000" />
+					
+				<p:dataTable value="#{beanClient.listClients}" var="c"
+					paginator="true" rows="10" id="tableclient" selectionMode="single"
+					selection="#{beanClient.selectedClient}" rowKey="#{c.numcli}">
+					
+					<f:facet name="header">Liste des Clients</f:facet>
+					<p:column headerText="Numero">
+					#{c.numcli}
+				</p:column>
+					<p:column headerText="Nom Complet">
+					#{c.name}
+				</p:column>
+					<p:column headerText="Adresse">
+					#{c.address}
+				</p:column>
+					<p:column headerText="Email">
+					#{c.email}
+				</p:column>
+					<p:column headerText="Telephone">
+					#{c.phone}
+				</p:column>
+				</p:dataTable>
+				<p:contextMenu for="tableclient">
+					<p:menuitem value="Supprimer" icon="pi pi-trash"
+						update=":formclient2" action="#{beanClient.delete()}">
+						<p:confirm header="Confirmation de suppression"
+							message="Voulez-vous supprimer ce Client?"
+							icon="pi pi-exclamation-triangle" />
+					</p:menuitem>
+				</p:contextMenu>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Oui" type="button"
+						styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					<p:commandButton value="Non" type="button"
+						styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+				</p:confirmDialog>
+			</h:form>
+			<script type="text/javascript">
+		    function handleLoginRequest(xhr, status, args) {
+		        if(args.validationFailed || !args.loggedIn) {
+		            PF('dlg').jq.effect("shake", {times:5}, 100);
+		        }else {
+		        	PF('dlg').hide();
+			    }
+		    }
+		</script>		
+		</ui:define>
+	</ui:composition>
+</body> 
+</html>
