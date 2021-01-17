@@ -43,8 +43,8 @@ public class Bus implements Serializable {
 			cascade={CascadeType.ALL})
 	@JoinTable(
 			name="destination_has_bus",
-			joinColumns=@JoinColumn(name="bus_idBus "),
-			inverseJoinColumns=@JoinColumn(name=" destination_idDest")
+			joinColumns=@JoinColumn(name="bus_idBus"),
+			inverseJoinColumns=@JoinColumn(name="destination_idDest")
 			)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@Fetch(value= FetchMode.SUBSELECT)

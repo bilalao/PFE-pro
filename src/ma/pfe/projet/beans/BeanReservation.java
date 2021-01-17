@@ -182,9 +182,9 @@ public class BeanReservation {
 		newRes.setJourney_date(destToSave.getTime());
 		System.out.println(new Date());
 		//newRes.setBooking_date(new Date ());
-		newRes.setBooking_date(10);
-		Integer totalNumberOfSeats = destToSave.getTotal_seat() + 1;
-		Integer seatNumber = 1;
+		newRes.setBooking_date(new Date());
+		int totalNumberOfSeats = destToSave.getTotal_seat() + 1;
+		int seatNumber = 1;
 		System.out.println("a");
 		if(null != destToSave.getReservations() && destToSave.getReservations().size() > 0) {
 			seatNumber = destToSave.getReservations().size() + 1;

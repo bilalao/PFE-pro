@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Spring_lib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../ista/j2ee/Spring IOC/lib_spring/Spring_lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../ista/j2ee/Spring IOC/lib_spring/Spring_lib" recursive="false" />
+  </library>
+</component>

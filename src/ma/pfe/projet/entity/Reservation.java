@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import java.util.List;
 
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +38,7 @@ public class Reservation implements Serializable {
 	@Column
 	private int journey_date;
 	@Column
-	private int booking_date;
+	private Date booking_date;
 
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH ,CascadeType.REMOVE})
 	@JoinColumn(name = "client_numcli")
@@ -49,9 +50,9 @@ public class Reservation implements Serializable {
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
 			CascadeType.REFRESH })
-	@JoinTable(name = "reservation_has_destination", 
-	joinColumns = @JoinColumn(name = "reservation_idReservation"),
-	inverseJoinColumns = @JoinColumn(name = "destination_idDest"))
+	@JoinTable(name = "reservation_has_destination",
+			joinColumns = @JoinColumn(name = "reservation_idReservation"),
+			inverseJoinColumns = @JoinColumn(name = "destination_idDest"))
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Destination> destinations;
@@ -88,11 +89,11 @@ public class Reservation implements Serializable {
 		this.journey_date = journey_date;
 	}
 
-	public int getBooking_date() {
+	public Date getBooking_date() {
 		return booking_date;
 	}
 
-	public void setBooking_date(int booking_date) {
+	public void setBooking_date(Date booking_date) {
 		this.booking_date = booking_date;
 	}
 
@@ -124,7 +125,7 @@ public class Reservation implements Serializable {
 		super();
 	}
 
-	public Reservation(int seat_numbers, int number_of_seat, int journey_date, int booking_date) {
+	public Reservation(int seat_numbers, int number_of_seat, int journey_date, Date booking_date) {
 		super();
 		this.seat_numbers = seat_numbers;
 		this.number_of_seat = number_of_seat;

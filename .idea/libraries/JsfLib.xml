@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="JsfLib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../ista/j2ee/JSF/Libraries-jar/JsfLib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../ista/j2ee/JSF/Libraries-jar/JsfLib" recursive="false" />
+  </library>
+</component>

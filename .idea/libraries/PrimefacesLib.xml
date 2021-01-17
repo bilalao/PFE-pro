@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="PrimefacesLib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../ista/j2ee/JSF/Libraries-jar/PrimefacesLib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../ista/j2ee/JSF/Libraries-jar/PrimefacesLib" recursive="false" />
+  </library>
+</component>

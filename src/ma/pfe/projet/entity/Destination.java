@@ -34,14 +34,14 @@ public class Destination implements Serializable {
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
 			CascadeType.REFRESH })
-	@JoinTable(name = "destination_has_station", joinColumns = @JoinColumn(name = "destination_idDest "), inverseJoinColumns = @JoinColumn(name = "station_idStation "))
+	@JoinTable(name = "destination_has_station", joinColumns = @JoinColumn(name = "destination_idDest"), inverseJoinColumns = @JoinColumn(name = "station_idStation"))
 	 @LazyCollection(LazyCollectionOption.FALSE)
 	 @Fetch(value= FetchMode.SUBSELECT)
 	private List<Station> stations;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
 			CascadeType.REFRESH })
-	@JoinTable(name = "destination_has_bus", joinColumns = @JoinColumn(name = "destination_idDest "), inverseJoinColumns = @JoinColumn(name = "bus_idBus"))
+	@JoinTable(name = "destination_has_bus", joinColumns = @JoinColumn(name = "destination_idDest"), inverseJoinColumns = @JoinColumn(name = "bus_idBus"))
 	 @LazyCollection(LazyCollectionOption.FALSE)
 	 @Fetch(value= FetchMode.SUBSELECT)
 	private List<Bus> bus;
@@ -160,6 +160,7 @@ public class Destination implements Serializable {
 		super();
 	}
 
+	/*
 	public void addStation(Station theStation) {
 		if (stations == null) {
 			stations = new ArrayList<>();
@@ -177,7 +178,7 @@ public class Destination implements Serializable {
 		bus.add(theBus);
 		System.out.println("Done!");
 	}
-
+*/
 	@Override
 	public String toString() {
 		return "Destination [idDest=" + idDest + ", stations=" + stations + ", bus=" + bus + ", station_from="
